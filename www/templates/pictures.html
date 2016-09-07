@@ -1,0 +1,12 @@
+<ion-view title="pictures">
+
+    <ion-nav-buttons side="right">
+        <div class="button" ng-click="sendSelected()">send</div>
+    </ion-nav-buttons>
+
+    <ion-content class="padding">
+        <div class="list">
+            <picture data="picture" checked="picture.checked" ng-click="picture.checked=!picture.checked" ng-repeat="picture in pictures"></picture>
+        </div>
+    </ion-content>
+</ion-view>
