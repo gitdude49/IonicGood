@@ -5,10 +5,10 @@ var xcode = require('xcode');
 var plist = require('plist');
 var fs = require('fs-extra');
 
-var APP_NAME = "GdSDKTest01"
-var APP_PACKAGE = "com.blaud.goodsdktest";
+var APP_NAME = "GDEnableNew"
+var APP_PACKAGE = "com.blaud.goodenablementnew";
 
-var GD_APPLICATION_ID = "com.blaud.goodsdktest";
+var GD_APPLICATION_ID = "com.blaud.goodenablementnew";
 var GD_APPLICATION_VERSION = "1.0.0.0";
 var GD_LIBRARY_MODE = "GDEnterprise";
 
@@ -44,13 +44,16 @@ if (plistObj.NSMainNibFile === null) {
 if (plistObj["NSMainNibFile~ipad"] === null) {
     plistObj["NSMainNibFile~ipad"] = "";
 }
+if (plistObj["NSLocationWhenInUseUsageDescription"] === null) {
+  plistObj["NSLocationWhenInUseUsageDescription"] = "";
+}
 
 fs.writeFileSync(plistFilename, plist.build(plistObj), "utf8");
 
 /*
 Copy GDApp files -> GD
  */
-var GoodSDKMaterialsSourcePath = "../Good.SDK/GoodEnablementNew/iOS";
+var GoodSDKMaterialsSourcePath = "./Good.SDK/GoodEnablementNew/iOS";
 var GoodSDKMaterialsDestinationPath = "./platforms/ios/GD";
 
 fs.copySync(GoodSDKMaterialsSourcePath + "/GD/GDApp.xcconfig", GoodSDKMaterialsDestinationPath + "/GDApp.xcconfig");
@@ -62,7 +65,7 @@ fs.copySync(GoodSDKMaterialsSourcePath + "/GD/GDAppDelegate.m", GoodSDKMaterials
 Replace AppDelegate (on filesystem)
 //TODO: instead of replacing whole files we better might apply a patch file (while checking of our patch is still valid/supported)
  */
-var GoodSDKMaterialsCustomSourcePath = "../Good.SDK/custom";
+var GoodSDKMaterialsCustomSourcePath = "./Good.SDK/custom";
 var GoodSDKMaterialsCustomDestinationPath = "./platforms/ios/" + APP_NAME + "/Classes";
 
 fs.copySync(GoodSDKMaterialsCustomSourcePath + "/AppDelegate.h", GoodSDKMaterialsCustomDestinationPath + "/AppDelegate.h");
