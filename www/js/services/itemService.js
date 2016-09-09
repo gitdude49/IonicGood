@@ -8,8 +8,15 @@ angular.module("starter.services")
         };
 
         var load = function(){
-            var result = JSON.parse(window.localStorage.getItem("ionicgood")) || [];
-            console.log(result);
+          var localStorageItem = window.localStorage.getItem("ionicgood");
+
+          var result;
+          if (!localStorageItem) {
+            result = [];
+          } else {
+            result = JSON.parse(localStorageItem);
+          }
+
             for(var i=0;i<result.length; i++){
                 switch(result[i].type){
                     case "person":
