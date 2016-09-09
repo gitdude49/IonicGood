@@ -19,15 +19,14 @@ angular.module('starter.controllers', [])
      */
 
     $scope.takePicture = function () {
-        cameraService.takePhoto().then(function(photo){
-            console.log("success", arguments);
-            itemService.addItem(photo);
-            alert("picture saved, sending to server");
-
-        },function(){
-            alert("ERROR!");
-            console.error("error", arguments);
-        });
+      cameraService.takePhoto().then(function (photo) {
+        console.log("success", arguments);
+        itemService.addItem(photo);
+        alert("picture success");
+      }, function (err) {
+        console.log("err", err);
+        alert("Error: \n\n" + JSON.stringify(err, null, 4));
+      });
     };
 })
 
