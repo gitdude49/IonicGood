@@ -1,0 +1,39 @@
+    <feature name="GDStorage">
+        <param name="ios-package" value="GDCStoragePlugin" />
+    </feature>
+    <feature name="GDApplication">
+        <param name="ios-package" value="GDCApplicationPlugin" />
+    </feature>
+    <feature name="GDDocuments">
+        <param name="ios-package" value="GDCDocumentsPlugin" />
+    </feature>
+    <feature name="GDInterAppCommunication">
+        <param name="ios-package" value="GDInterAppCommunicationPlugin" />
+    </feature>
+    <feature name="GDFileTransfer">
+        <param name="ios-package" value="GDCFileTransferPlugin" />
+    </feature>
+    <feature name="GDHttpRequest">
+        <param name="ios-package" value="GDCHttpRequestPlugin" />
+    </feature>
+    <feature name="GDPush">
+        <param name="ios-package" value="GDCPushPlugin" />
+    </feature>
+    <feature name="GDSQLite">
+        <param name="ios-package" value="GDCSQLitePlugin" />
+    </feature>
+    <feature name="GDSocket">
+        <param name="ios-package" value="GDCSocketPlugin" />
+    </feature>
+    <feature name="GDTokenHelper">
+        <param name="ios-package" value="GDTokenHelperPlugin" />
+    </feature>
+    <feature name="GDAppKinetics">
+        <param name="ios-package" value="GDAppKineticsPlugin" />
+    </feature>
+    <feature name="GDSpecificPolicies">
+        <param name="ios-package" value="GDSpecificPoliciesPlugin" />
+    </feature>
+    <feature name="GDServerSideServices">
+        <param name="ios-package" value="GDServerSideServicesPlugin" />
+    </feature>

@@ -1,0 +1,21 @@
+#### General Rules -optimizationpasses 5 -dontusemixedcaseclassnames -dontskipnonpubliclibraryclasses -dontpreverify
+-verbose
+-optimizations !code/simplification/arithmetic,!field/*,!class/merging/* -keepattributes Exceptions
+-keepclassmembers enum * {
+public static **[] values();
+public static ** valueOf(java.lang.String);
+}
+## Rules for GD and its included library components
+-keep class com.good.gd.** {
+<methods>;
+<fields>;
+}
+-keep class com.good.gt.** {
+<methods>;
+<fields>;
+}
+-keep class org.apache.http.** {
+<methods>;
+<fields>;
+}
+-dontwarn com.good.gd.**

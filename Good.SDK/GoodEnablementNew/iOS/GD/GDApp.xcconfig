@@ -1,0 +1,7 @@
+
+FIPS_PACKAGE=$(CURRENT_ARCH).sdk
+LDPLUSPLUS=/Good Technology/Good.platform/FIPS_module/$FIPS_PACKAGE/bin/gd_fipsld
+LD=/Good Technology/Good.platform/FIPS_module/$FIPS_PACKAGE/bin/gd_fipsld
+ENABLE_BITCODE=NO
+INFOPLIST_FILE = HelloCordova/GD/gdInfo.plist
+OTHER_CFLAGS = -D GDEnabled
