@@ -1,6 +1,6 @@
 angular.module('starter.services')
 
-  .factory('comGoodService', function ($http) {
+  .factory('comGoodService', function ($q, fileService) {
 
     var doHttp = function(req) {
       console.log('--> comGoodService.doHttp');
@@ -90,8 +90,44 @@ angular.module('starter.services')
       return defer.promise;
     }
 
+    var doUpload = function(req, photo) {
+      console.log('--> doUpload');
+
+      var def = $q.defer();
+
+      console.log('going to get url for filenameFull, photo.filenameFull:', photo.filenameFull);
+
+      fileService.toURL(photo.filenameFull).then(function(fileUrl) {
+        console.log("got URL for photo.filenameFull", fileUrl);
+
+        var filename = photo.filenameFull;
+
+        var options = new FileUploadOptions();
+        options.fileKey = "foto";
+        options.fileName = fileService.filename(filename);
+        options.params = req.data;
+        options.mimeType = "text/plain";
+        options.headers = req.headers;
+
+        console.log("fileUrl", fileUrl);
+        console.log("req.url", req.url);
+        console.log("options", options);
+
+        return fileService.upload(fileUrl, req.url, options).then(function(result){
+          console.log("result", result);
+          def.resolve(result);
+        }, function(err) {
+          console.log("err", err);
+          def.reject(err);
+        });
+      });
+
+      return def.promise;
+    }
+
     return {
-      doHttp: doHttp
+      doHttp: doHttp,
+      doUpload: doUpload
     }
 
   })

@@ -61,6 +61,7 @@ angular.module('starter.services')
 
     var doHttp = function() {
       console.log('--> doHttp');
+
       var req = {
         method: "GET",
         url: createUrl("/api/personen", {sleuteltype:0, sleutelwaarde: "123456782"})
@@ -75,33 +76,26 @@ angular.module('starter.services')
         return comCordovaService.doHttp(req);
       }
 
-      return $http(req);
     }
 
     var doUpload = function(picture) {
+      console.log('--> doUpload');
+      console.log('picture', picture);
+
       var req = {
         method: "POST",
         url: createUrl("/api/foto"),
-        data: {zaakId: 1},
-        //headers: []
+        data: {zaakId: 1}
       };
 
       setHeaders(req);
       console.log(req);
 
-      var filename = picture.title;
-      if (picture.filenameFull.lastIndexOf(".") !== -1) {
-        filename = picture.title + picture.filenameFull.substr(picture.filenameFull.lastIndexOf("."));
+      if (good.isEnabled()) {
+        return comGoodService.doUpload(req, picture);
+      } else {
+        return comCordovaService.doUpload(req, picture);
       }
-
-      var options = {
-        fileKey: "foto",
-        fileName: filename,
-        params: req.data,
-        headers: req.headers
-      };
-
-      return fileService.upload(picture.filenameFull, req.url, options);
     }
 
     return {
