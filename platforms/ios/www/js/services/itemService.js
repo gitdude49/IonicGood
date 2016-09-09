@@ -8,22 +8,14 @@ angular.module("starter.services")
         };
 
         var load = function(){
-          console.log('--> load');
-
-          console.log('window.localStorage', window.localStorage);
-          console.log('window.localStorage.getItem("ionicgood")', window.localStorage.getItem("ionicgood"));
-
-          var ls = window.localStorage.getItem("ionicgood");
-          console.log('typeof ls', typeof ls);
+          var localStorageItem = window.localStorage.getItem("ionicgood");
 
           var result;
-          if (!ls) {
-            console.log('!ls');
+          if (!localStorageItem) {
             result = [];
           } else {
-            result = JSON.parse(ls);
+            result = JSON.parse(localStorageItem);
           }
-          console.log('result', result);
 
             for(var i=0;i<result.length; i++){
                 switch(result[i].type){
