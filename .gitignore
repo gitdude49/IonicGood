@@ -26,21 +26,10 @@ crashlytics-build.properties
 # Custom
 .DS_Store
 node_modules/
-/platforms/
-/build/
-/builds/
-/dist/
-/tests.output/
-
-#Plugins
 /plugins/*
-!/plugins/where_are_the_plugins.txt
-!/plugins/com.kofax.cordova
-
 /www/lib/*
 
 npm-debug.log
-appium/temp.screenshots
 .gradle
 
 .idea
