@@ -1,6 +1,16 @@
 angular.module('starter.controllers', [])
 
 .controller('homeCtrl', function($scope, cameraService,itemService) {
+    $scope.doHttp = function () {
+      console.log('--> doHttp');
+      comService.doHttp().then(function (result) {
+        console.log("result", result);
+        alert("Success: \n\n" + JSON.stringify(result, null, 4));
+      }, function (err) {
+        console.log("err", err);
+        alert("Error: \n\n" + JSON.stringify(err, null, 4));
+      });
+    }
 
     /**
      * method is used to take a picture using camera
