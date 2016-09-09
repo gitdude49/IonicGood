@@ -26,7 +26,6 @@ crashlytics-build.properties
 # Custom
 .DS_Store
 node_modules/
-/plugins/*
 /www/lib/*
 
 npm-debug.log

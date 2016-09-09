@@ -1,0 +1,27 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.blaud.ionicgood"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.blaud.ionicgood"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.blaud.ionicgood"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.blaud.ionicgood"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.blaud.ionicgood"
+        }
+    },
+    "dependent_plugins": {}
+}
