@@ -5,35 +5,35 @@
  *
  * @description The Good Dynamics (GD) APIs enable the following functionality
  * and features to be included in a GD application installed on a user's mobile device:
- * 
+ *
  * <p>
  * <b>Activating the GD client</b><br/>
  * This includes collecting device and user-specific information that is used
- * by the Network Operations Center (NOC) for device activation and profile 
+ * by the Network Operations Center (NOC) for device activation and profile
  * creation.
  * </p>
- * 
+ *
  * <p>
  * <b>Establishing a secure communications channel with the NOC</b><br/>
  * Secure communications are achieved through the socket API if needed. After
  * specifying whether or not to use the Secure Socket Layer (SSL), the connection
  * is made and data is shared.
  * </p>
- * 
+ *
  * <p>
  * <b>Securing corporate data in a discrete container on the mobile device</b><br/>
  * The secure container is a feature of a GD-enabled app.  It stores corporate data
  * in encrypted form within the local storage on the device.  Also, the secure
  * container separates corporate data from the user's data on the mobile device.
  * </p>
- * 
+ *
  * <p>
  * <b>Creating a push channel</b><br/>
  * This channel is the primary mechanism by which the GD client becomes aware of
  * updates to data from behind the corporate firewall. This mechanism allows the GD
  * client to conserve battery power by only connecting when it is necessary.
  * </p>
- * 
+ *
  * <p>
  * <b>Enforcing entitlement and authorization policies</b><br/>
  * The GD client manages the user's access and available functionality based on the
@@ -43,7 +43,7 @@
  * authorization. Should either of these change, the GD client can update the mobile
  * device accordingly.
  * </p>
- * 
+ *
  * @version 1.0
  */
 
@@ -61,25 +61,25 @@
 	 * @class GDHttpResponse
 	 * @classdesc This class encapsulates the HTTP response returned from a GDHttpRequest's
 	 * send function.
-	 * 
+	 *
 	 * @param {string} json The input data (formatted as JSON text) used to construct the
 	 * response object.
-	 * 
+	 *
 	 * @property {string} headers The HTTP response headers.
-	 * 
+	 *
 	 * @property {string} status The HTTP response status.
-	 * 
+	 *
 	 * @property {string} statusText The textual HTTP response status, as sent by the server,
 	 * or details of error if the returned status is 0.
-	 * 
+	 *
 	 * @property {string} responseText The data returned from the HTTP request.  This data is
 	 * retrieved from the JSON string that was passed into this function.  If the input to this
 	 * function is not in valid JSON format, then this property will be the empty string.
-	 * 
+	 *
 	 * @property {string} responseData This is the raw (unparsed) data that was passed into this
 	 * function.  This data is useful as a means to support manual processing/parsing if the input
 	 * data could not be parsed as a JSON object.
-	 * 
+	 *
 	 * @property {string} responseState This value represents the current state of the opened HTTP
 	 * process.  The response is not complete until the responseState reaches the "DONE" state.
 	 * The following states are valid:
@@ -89,7 +89,7 @@
 	 *     typically indicative of an incremental request that is in progress.</li>
 	 *     <li>"DONE" All data has been received, or a permanent error has been encountered. </li>
 	 * </ul>
-	 * 
+	 *
 	 * @return {GDHttpResponse}
 	 */
 	var GDHttpResponse = function(json) {
@@ -129,11 +129,11 @@
 			this.responseData = json;
 		}
 	};
-	
+
 	/**
 	 * @class GDHttpRequest
 	 * @classdesc Implements the secure HTTP communications APIs.
-	 * 
+	 *
 	 * @property {string} method Case-sensitive string containing the HTTP method, which
 	 * will be sent to the server. Typical values are: "GET", "POST", "HEAD",
 	 * "OPTIONS", "TRACE", "PUT", "CONNECT". Any other value is sent as a custom
@@ -142,7 +142,7 @@
 	 * @property {string} url Uniform Resource Locator (URL) that will be requested. The
 	 * URL must be fully qualified, including a scheme, domain, and path. For
 	 * example: "http://www.example.com/index.html".
-	 * 
+	 *
 	 * @property {number} timeout Length of time out in seconds, or 0 (zero) for never.
 	 * A negative timeout number will allow this request to use the default timeout
 	 * value (30 seconds).
@@ -182,29 +182,29 @@
 	 * @property {string} cookieState Stores a value that determines whether or not cookies
 	 * should be cleared prior to sending the request.  This value should not be set
 	 * directly.  Instead, call the clearCookies method.
-	 * 
+	 *
 	 * @property {string} host The address of the proxy. Can be either an Internet Protocol
 	 * address (IP address, for example "192.168.1.10"), or a fully qualified domain name
-	 * (for example "www.example.com"). 
-	 * 
+	 * (for example "www.example.com").
+	 *
 	 * @property {number} port Number of the port on the proxy to which connection will be made.
-	 * 
+	 *
 	 * @property {string} proxyUser The proxy authentication username.
-	 * 
+	 *
 	 * @property {string} proxyPassword The proxy authentication password.
-	 * 
+	 *
 	 * @property {string} proxyAuth The proxy authentication scheme.  Valid values are:
 	 * <ul>
 	 *	<li>"NTLM" to use NTLM authentication (NTLM version 2 is not supported)</li>
 	 *	<li>"DIGEST" to use Digest Access authentication</li>
 	 *	<li>"BASIC" or a null pointer to use Basic Access authentication.</li>
 	 * </ul>
-	 * 
+	 *
 	 * @property {string} fileName The path (optional) and filename of the file to upload if this
 	 * is a file upload request. If path is omitted, the file is read from the current working directory.
 	 * NOTE: There is no need to set this property directly since it will be set during the sendFile
 	 * function call (see <a href="#sendFile">sendFile</a>).
-	 * 
+	 *
 	 * @property {object} sendOptions This object contains any optional parameters that
 	 * are sent with the HTTP request.  This value should not be set directly.  Instead,
 	 * call the desired optional methods to set the request parameters (e.g.
@@ -247,22 +247,22 @@
 	 * will be sent to the server. Typical values are: "GET", "POST", "HEAD",
 	 * "OPTIONS", "TRACE", "PUT", "CONNECT". Any other value is sent as a custom
 	 * method.
-	 * 
+	 *
 	 * @param {string} url Uniform Resource Locator (URL) that will be requested. The
 	 * URL must be fully qualified, including a scheme, domain, and path. For
 	 * example: "http://www.example.com/index.html".
-	 * 
+	 *
 	 * @param {number} timeout Length of time out in seconds, or 0 (zero) for never.
 	 * A negative timeout number will allow this request to use the default timeout
 	 * value (30 seconds).
-	 *  
+	 *
 	 * @param {boolean} isAsync Set this value to true to make asynchronous calls.
-	 * 
+	 *
 	 * @param {string} user Authentication username. For Kerberos, this is in the
 	 * user@realm format.
-	 * 
+	 *
 	 * @param {string} password Authentication password.
-	 * 
+	 *
 	 * @param {string} auth The authentication scheme.  Valid values are:
 	 * <ul>
 	 *	<li>"NTLM" to use NTLM authentication (NTLM version 2 is not supported)</li>
@@ -270,7 +270,7 @@
 	 *	<li>"NEGOTIATE" to use negotiated Kerberos authentication</li>
 	 *	<li>"BASIC" or a null pointer to use Basic Access authentication.</li>
 	 * </ul>
-	 * 
+	 *
 	 * @param {boolean} isIncremental Determine if the response from an aysnchronous HTTP request
 	 * should be processed incrementally (as soon as data is received), or if the entire
 	 * request should be returned within a single response.
@@ -290,22 +290,22 @@
 			result.isIncremental = false;
 		else
 			result.isIncremental = isIncremental;
-		
+
 		return result;
 	};
 
 	/**
 	 * @function GDHttpRequest#clearCookies
-	 * 
+	 *
 	 * @description Clear cookies that were automatically stored. Cookies can be cleared from
 	 * memory only, or from the persistent cookie store too. If cleared from memory only,
 	 * cookies will still be reloaded from the persistent cookie store when the application
 	 * is next launched.  This function is most useful when automatic cookie handling is
 	 * enabled (i.e. GDHttpRequest.disableCookieHandling = false).
-	 * 
+	 *
 	 * @param {boolean} includePersistentStore When this value is set to true, then all
 	 * cookies are cleared from memory and the persistent cookie storage file.  When
-	 * this value is false, then all cookies are cleared from memory only. 
+	 * this value is false, then all cookies are cleared from memory only.
 	 */
 	GDHttpRequest.prototype.clearCookies = function(includePersistentStore) {
 		if(includePersistentStore === true)
@@ -313,10 +313,10 @@
 		else
 			this.cookieState = "memory";
 	};
-	
+
 	/**
 	 * @function GDHttpRequest#enableHttpProxy
-	 * 
+	 *
 	 * @description Call this function to configure an HTTP proxy address and credentials,
 	 * and enable connection through the proxy.  The proxy server can be located behind the
 	 * enterprise firewall. In this case its address must be registered in the enterprise's
@@ -325,20 +325,20 @@
 	 * application developers</a>.  Certificate authenticity verification while using a proxy
 	 * is not currently supported. When making HTTPS requests through a proxy, SSL/TLS
 	 * certificate verification must be disabled, see the disablePeerVerification function.
-	 * This function should be called before <a href="#send">GDHttpRequest.send</a> or 
+	 * This function should be called before <a href="#send">GDHttpRequest.send</a> or
 	 * <a href="#sendFile">GDHttpRequest.sendFile</a> has been called.
-	 * 
+	 *
 	 * @param {string} host The address of the proxy. Can be either an Internet Protocol
 	 * address (IP address, for example "192.168.1.10"), or a fully qualified domain name
 	 * (for example "www.example.com").
-	 * 
+	 *
 	 * @param {number} port Number of the port on the proxy to which connection will be made.
-	 * 
+	 *
 	 * @param {string} user The proxy authentication username.
-	 * 
+	 *
 	 * @param {string} password The proxy authentication password.
-	 * 
-	 * 
+	 *
+	 *
 	 * @param {string} auth The proxy authentication scheme.  Valid values are:
 	 * <ul>
 	 *	<li>"NTLM" to use NTLM authentication (NTLM version 2 is not supported)</li>
@@ -353,12 +353,12 @@
 		this.proxyPassword = password;
 		this.proxyAuth = auth;
 	};
-	
+
 	/**
 	 * @function GDHttpRequest#disableHttpProxy
-	 * 
+	 *
 	 * @description Call this function to disable connection through an HTTP proxy.
-	 * This function should be called before <a href="#send">GDHttpRequest.send</a> 
+	 * This function should be called before <a href="#send">GDHttpRequest.send</a>
 	 * or <a href="#sendFile">GDHttpRequest.sendFile</a> has been called.
 	 */
 	GDHttpRequest.prototype.disableHttpProxy = function() {
@@ -368,10 +368,10 @@
 		this.proxyPassword = null;
 		this.proxyAuth = null;
 	};
-	
+
 	/**
 	 * @function GDHttpRequest#addRequestHeader
-	 * 
+	 *
 	 * @description Call this function to add a Header Field to the HTTP request. This
 	 * is for standard HTTP Header Fields such as "Authorization".  This function can
 	 * be called zero or more times, since not all HTTP requests will require headers to
@@ -383,44 +383,44 @@
 	GDHttpRequest.prototype.addRequestHeader = function(key, value) {
 		if(typeof this.sendOptions.RequestHeaders === 'undefined' || this.sendOptions.RequestHeaders === null)
 			this.sendOptions.RequestHeaders = {};
-		
+
 		this.sendOptions.RequestHeaders[key] = value;
 	};
-	
+
 	/**
 	 * @function GDHttpRequest#clearRequestHeaders
-	 * 
+	 *
 	 * @description Call this function to remove all name/value request headers that
 	 * were added through a call to addRequestHeader.
 	 */
 	GDHttpRequest.prototype.clearRequestHeaders = function() {
 		this.sendOptions.RequestHeaders = null;
 	};
-	
+
 	/**
 	 * @function GDHttpRequest#addPostParameter
-	 * 
+	 *
 	 * @description Call this function to add a name/value pair to the HTTP request.
 	 * The request method must be "POST". Multiple name/value pairs can be added, by
 	 * calling this function multiple times.  When the request is sent, name/value pairs
 	 * will be encoded in the request body in a way that is compatible with HTML form
 	 * submission. No other body data can be passed in the send call.
-	 * 
+	 *
 	 * @param {string} key The name associated with the value.
-	 * @param {string} value The value to be set. 
+	 * @param {string} value The value to be set.
 	 */
 	GDHttpRequest.prototype.addPostParameter = function(key, value) {
 		if(typeof this.sendOptions.PostParameters === 'undefined' || this.sendOptions.PostParameters === null)
 			this.sendOptions.PostParameters = [];
-		
+
 		var entry = {};
 		entry[key] = value;
 		this.sendOptions.PostParameters.push(entry);
 	};
-	
+
 	/**
 	 * @function GDHttpRequest#clearPostParameters
-	 * 
+	 *
 	 * @description Call this function to remove all name/value post variables from the HTTP
 	 * request. Name/value pairs would have been added with the addPostParameter function.
 	 * This function need only be called if it is required to clear name/value pairs before
@@ -429,43 +429,43 @@
 	GDHttpRequest.prototype.clearPostParameters = function() {
 		this.sendOptions.PostParameters = null;
 	};
-	
+
 	/**
 	 * @function GDHttpRequest#addHttpBody
-	 * 
-	 * @description Call this function to add an httpBody to a post request, the body will take 
+	 *
+	 * @description Call this function to add an httpBody to a post request, the body will take
      * the place of any post parameters
-	 * 
+	 *
 	 * @param {string} body the http body to be sent
 	 */
-	GDHttpRequest.prototype.addHttpBody = function(body) {		
+	GDHttpRequest.prototype.addHttpBody = function(body) {
 		this.sendOptions.HttpBody = body;
 	};
-	
+
 	/**
 	 * @function GDHttpRequest#clearHttpBody
-	 * 
+	 *
 	 * @description Call this function to clear the httpBody of a request
-	 * 
+	 *
 	 */
-	GDHttpRequest.prototype.clearHttpBody = function() {		
+	GDHttpRequest.prototype.clearHttpBody = function() {
 		this.sendOptions.HttpBody = null;
 	};
-	
+
 	/**
 	 * @function GDHttpRequest#parseHttpResponse
-	 * 
+	 *
 	 * @description Call this function to transform the HTTP response text into a
 	 * GDHttpResponse object.
-	 * 
+	 *
 	 * @param {string} responseText A string representing the HTTP response text.
-	 * 
+	 *
 	 * @return {GDHttpResponse} The HTTP response object.
 	 */
 	GDHttpRequest.prototype.parseHttpResponse = function(responseText) {
 		return new GDHttpResponse(responseText);
 	};
-	
+
 	/**
 	 * @function GDHttpRequest#send
 	 * @description Send the HTTP request with it's associated parameters.
@@ -475,22 +475,22 @@
 	GDHttpRequest.prototype.send = function(success, fail) {
 		this.sendRequest(success, fail);
 	};
-	
+
 	/**
 	 * @function GDHttpRequest#sendFile
 	 * @description Call this function to upload a file using the HTTP request object.  NOTE: this method does not
-	 * support asynchronous operations.  The HTTP request's method can be "PUT" or a custom method. This function 
-	 * causes the HTTP request to be sent, similarly to the send function, above. The body of the request will be 
-	 * the contents of the specified file.  The file will not be deleted after it is uploaded. Uploading directly 
+	 * support asynchronous operations.  The HTTP request's method can be "PUT" or a custom method. This function
+	 * causes the HTTP request to be sent, similarly to the send function, above. The body of the request will be
+	 * the contents of the specified file.  The file will not be deleted after it is uploaded. Uploading directly
 	 * from the Good Dynamics secure file system is supported.
-	 * 
-	 * @param {string} fileName The path (optional) and filename of the file to upload. If path is omitted, the file 
-	 * is read from the application documents directory. 
-	 * 
+	 *
+	 * @param {string} fileName The path (optional) and filename of the file to upload. If path is omitted, the file
+	 * is read from the application documents directory.
+	 *
 	 * @param {function} success Callback function to invoke upon successful completion of the request.
-	 * 
+	 *
 	 * @param {function} fail Callback function to invoke if the request cannot be completed.
-	 * 
+	 *
 	 * @example
 	 * <pre class="prettyprint"><code>
 	 * var data_json_url = "http://servername.dev.company.com:8082/data.json";
@@ -498,7 +498,7 @@
 	 * var MaxTestDuration = 10 * 1000;	// In milliseconds.
 	 * var gTestTimeoutID = null;
 	 * var aRequest;
-	 * 
+	 *
 	 * function myHTTPRequest(){
 	 * var method = "GET";
 	 * var url = data_json_url;
@@ -508,32 +508,32 @@
 	 * var password = null;
 	 * var auth = null;
 	 * var isIncremental = true;
-	 * 
+	 *
 	 * //-- createRequest
 	 * aRequest = window.plugins.GDHttpRequest.createRequest(method, url, timeout, isAsync, user, password, auth, isIncremental);
-	 * 
+	 *
 	 * //-- clearCookies in memory
 	 * aRequest.clearCookies(false);
-	 * 
+	 *
 	 * //-- clearCookies in memory and the persistent cookie storage file
 	 * aRequest.clearCookies(true);
-	 * 
+	 *
 	 * //-- enableHttpProxy & disableHttpProxy
 	 * var host = "some_host.com", port = 8080;
 	 * user = "some_user";
 	 * password = "some_pwd";
 	 * aRequest.enableHttpProxy(host, port, user, password, auth);
 	 * aRequest.disableHttpProxy();
-	 * 
+	 *
 	 * //-- addRequestHeader
 	 * var headerName = "customHeader", headerValue = "customValue";
 	 * aRequest.addRequestHeader(headerName, headerValue);
-	 * 
+	 *
 	 * //-- addPostParameter & clearPostParameters
 	 * var postName = "someName", postValue = "some value";
 	 * aRequest.addPostParameter(postName, postValue);
 	 * aRequest.clearPostParameters();
-	 * 
+	 *
 	 * //-- send
 	 * function sendSuccess(response) {
      *  console.log("Received valid response from the send request");
@@ -552,11 +552,11 @@
      *
      * aRequest.send(sendSuccess,sendFail);
      * }
-     * 
+     *
      * </code></pre>
-     * 
-     * 
-	 * 
+     *
+     *
+	 *
 	 */
 	GDHttpRequest.prototype.sendFile = function(fileName, success, fail) {
 		if(typeof fileName === 'Object' || typeof fileName === 'undefined') {
@@ -565,23 +565,23 @@
 		}
 		else
 			this.fileName = fileName;
-		
+
 		this.sendRequest(success, fail);
 	};
-	
+
 	/* (Private function)
 	 * @function GDHttpRequest#sendRequest
 	 * @description Send the HTTP request with it's associated parameters.
 	 * @param {function} success Callback function to invoke upon successful completion of the request.
 	 * @param {function} fail Callback function to invoke if the request cannot be completed.
-	 * 
-     * 
+	 *
+     *
      */
 	GDHttpRequest.prototype.sendRequest = function(success, fail) {
 		/**
 		 * The properties of the GDHttpRequest object are passed to the native iOS code as an
 		 * array of string values in the following order:
-		 * [method, url, isAsync, user, password, auth, disableHostVerification, 
+		 * [method, url, isAsync, user, password, auth, disableHostVerification,
 		 *  disableFollowLocation, disablePeerVerification, disableCookieHandling].
 		 */
 
@@ -589,12 +589,12 @@
 			console.log("ERROR: No method passed to sendRequest.");
 			return;
 		}
-		
+
 		if(this.method === null || typeof this.method === 'undefined') {
 			console.log("ERROR: No url passed to sendRequest.");
 			return;
 		}
-		
+
 		var lAsync = (this.isAsync === false) ? "false" : "true";
 		var lIsIncremental = (this.isIncremental === true) ? "true" : "false";
 		var lHost = (this.disableHostVerification === false) ? "false" : "true";
@@ -645,16 +645,16 @@
 
 	// ***** END: MODULE METHOD DEFINITIONS - GDHttpRequest *****
 
-	
+
 	/**
 	 * @class GDSocketResponse
 	 * @classdesc This class encapsulates the response returned from the GDSocket class.
-	 * 
+	 *
 	 * @param {string} json The input data (formatted as JSON text) used to construct the
 	 * response object.
-	 * 
+	 *
 	 * @property {string} socketID The unique ID for the socket connection that generated this response.
-	 * 
+	 *
 	 * @property {string} responseType This value is used to distinguish what action triggered this response.
 	 * Valid values are:
 	 * <ul>
@@ -665,22 +665,22 @@
 	 *   description of the error.</li>
 	 *   <li>close - The socket connection was closed.</li>
 	 * </ul>
-	 * 
+	 *
 	 * @property {string} responseData This field will be populated with data from the server if the
 	 * response contained data what was intended to be processed by the client.
-	 * 
+	 *
 	 * @return {GDSocketResponse}
 	 */
 	var GDSocketResponse = function(json) {
 		this.socketID = null;
 		this.responseType = null;
 		this.responseData = null;
-		
+
 		try {
 			var obj = JSON.parse(unescape(json));
 			this.socketID = obj.socketID;
 			this.responseType = obj.responseType;
-			
+
 			/*
 			 * The response could have been JSON text, which we might need to revert to it's
 			 * string representation.
@@ -698,32 +698,32 @@
 			this.responseType = "error";
 		}
 	};
-	
+
 	/**
 	 * @class GDSocket
 	 * @classdesc Implements the secure Socket communications APIs.
-	 * 
+	 *
 	 * @property {string} url The address of the server. Can be either an Internet Protocol
 	 * address (IP address, for example "192.168.1.10"), or a fully qualified domain name
 	 * (for example "www.example.com").
-	 * 
+	 *
 	 * @property {number} port Number of the server port to which the socket will connect.
-	 * 
+	 *
 	 * @property {boolean} useSSL This value determines whether or not to use SSL/TLS security.
-	 * 
+	 *
 	 * @property {boolean} disableHostVerification Disable host name verification, when
 	 * making an HTTPS request. Host name verification is an SSL/TLS security option.
 	 *
 	 * @property {boolean} disablePeerVerification Disable certificate authenticity verification,
 	 * when making an SSL/TLS connection. Authenticity verification is an SSL/TLS security option.
-	 * 
+	 *
 	 * @property {function} onSocketResponse This function is the callback handler that is called
 	 * whenever a response is returned from the socket connection.  This function should check
 	 * the value of the responseType returned and determine the required action to take.  If the
 	 * responseType = "open", then the socketID returned in the response should be used to send
 	 * data in subsequent calls for this socket connection (see GDSocket.send).  NOTE: This
 	 * function is required to be a non-null value.
-	 * 
+	 *
 	 * @property {function} onSocketError This function is the callback handler that is called
 	 * whenever a socket error occurs.  This function should check the value of the responseType
 	 * returned and determine the required action to take.
@@ -739,22 +739,22 @@
 	};
 
 	// ***** BEGIN: MODULE METHOD DEFINITIONS - GDSocket *****
-	
+
 	/**
 	 * @function GDSocket#createSocket
-	 * 
+	 *
 	 * @description Call this function to create a socket and set the main parameters.  NOTE: This
 	 * funtion only initializes the socket parameters; it does not initiate data transfer nor does
 	 * it make the initial socket connection (see GDSocket.connect).
-	 * 
+	 *
 	 * @param {string} url The address of the server. Can be either an Internet Protocol
 	 * address (IP address, for example "192.168.1.10"), or a fully qualified domain name
 	 * (for example "www.example.com").
-	 * 
+	 *
 	 * @param {number} port Number of the server port to which the socket will connect.
-	 * 
+	 *
 	 * @param {boolean} useSSL his value determines whether or not to use SSL/TLS security.
-	 * 
+	 *
 	 * @return {GDSocket}
 	 */
 	GDSocket.prototype.createSocket = function(url, port, useSSL) {
@@ -764,12 +764,12 @@
 		result.useSSL = useSSL;
 		return result;
 	};
-	
+
 	/**
 	 * @function GDSocket#connect
-	 * 
+	 *
 	 * @description Open a new socket connection.
-	 * 
+	 *
 	 * @return {GDSocketResponse} A socket response object in JSON format.  The result should be
 	 * parsed and saved as a GDSocketResponse object in the callback handler.  If the connection
 	 * was successful then the response object will be initialize with a socketID property that
@@ -783,11 +783,11 @@
 			console.log("onSocketResponse callback handler for GDSocket object is null.");
 			return;
 		}
-		
+
 		var lUseSSL = (this.useSSL === true) ? "true" : "false";
 		var lHost = (this.disableHostVerification === true) ? "true" : "false";
 		var lPeer = (this.disablePeerVerification === true) ? "true" : "false";
-		
+
 		var parms = [this.url,
 		             this.port.toString(),
 		             lUseSSL,
@@ -796,26 +796,26 @@
 		            ];
 		cordovaRef.exec(this.onSocketResponse, this.onSocketError, "GDSocket", "connect", parms);
 	};
-	
+
 	/**
 	 * @function GDSocket#send
-	 * 
+	 *
 	 * @description Call this function to send data using the open socket connection.
-	 * 
+	 *
 	 * @param {string} socketID The identifier for the open socket connection.  This value
 	 * is returned from a successful call to GDSocket.connect.
-	 * 
+	 *
 	 * @param {string} data The data to transmit using the open socket.
-	 * 
+	 *
 	 * @example
 	 * <pre class="prettyprint"><code>
 	 * function mySocketRequest(){
      *  var url = socket_url;
      *  var port = socket_port;
      *  var useSSL = false;
-     *  //--createSocket 
+     *  //--createSocket
      *  var aSocket = window.plugins.GDSocket.createSocket(url, port, useSSL);
-     *  
+     *
      *  aSocket.onSocketResponse = function(obj) {
      *      console.log("Socket response is valid.");
      *      var socketResponse = window.plugins.GDSocket.parseSocketResponse(obj);
@@ -867,19 +867,19 @@
 			console.log("Null socketID passed to GDSocket.send.");
 			return;
 		}
-		
+
 		var parms = [socketID,
 		             data
 		            ];
-		
+
 		cordovaRef.exec(success, failure, "GDSocket", "send", parms);
 	};
 
 	/**
 	 * @function GDSocket#close
-	 * 
+	 *
 	 * @description Call this function to close the socket connection.
-	 * 
+	 *
 	 * @param {string} socketID The identifier for the open socket connection.  This value
 	 * is returned from a successful call to GDSocket.connect.
 	 */
@@ -888,21 +888,21 @@
 			console.log("Null socketID passed to GDSocket.close.");
 			return;
 		}
-		
+
 		var parms = [socketID];
-		
+
 		cordovaRef.exec(success, failure, "GDSocket", "close", parms);
 	};
 
 
 	/**
 	 * @function GDSocket#parseSocketResponse
-	 * 
+	 *
 	 * @description Call this function to transform the socket response text into a
 	 * GDSocketResponse object.
-	 * 
+	 *
 	 * @param {string} responseText A string representing the socket response text.
-	 * 
+	 *
 	 * @return {GDSocketResponse} The socket response object.
 	 */
 	GDSocket.prototype.parseSocketResponse = function(responseText) {
@@ -913,8 +913,8 @@
 
 	/**
 	 * @class GDCacheController
-	 * @classdesc Use this class to control the secure authentication caches of the 
-	 * GDURLLoadingSystem and GDHttpRequest classes. (Currently, there are only two controls.) 
+	 * @classdesc Use this class to control the secure authentication caches of the
+	 * GDURLLoadingSystem and GDHttpRequest classes. (Currently, there are only two controls.)
 	 * The secure authentication cache is used by these classes as follows:<br/>
 	 * <br/>
 	 * <b>GD URL Loading System</b>
@@ -930,17 +930,17 @@
 	var GDCacheController = function() {};
 
 	// ***** BEGIN: MODULE METHOD DEFINITIONS - GDCacheController *****
-	
+
 	/**
 	 * @function GDCacheController#clearCredentialsForMethod
-	 * 
-	 * @description Call this function to clear the cached credentials for a 
-	 * particular authentication method, or to clear for all methods. Calling this 
-	 * function clears the session cache, and the permanent cache if present. 
-	 * (Currently, the Good Dynamics client library only has a permanent cache for 
+	 *
+	 * @description Call this function to clear the cached credentials for a
+	 * particular authentication method, or to clear for all methods. Calling this
+	 * function clears the session cache, and the permanent cache if present.
+	 * (Currently, the Good Dynamics client library only has a permanent cache for
 	 * Kerberos authentication tickets.)
-	 * 
-	 * @param {string} method One of the following constants, specifying which cache 
+	 *
+	 * @param {string} method One of the following constants, specifying which cache
 	 * or caches are to be cleared:
 	 * <ul>
 	 *	<li>"HTTPBasic" clears Basic Authentication credentials</li>
@@ -950,20 +950,20 @@
 	 *	<li>"Negotiate" clears Kerberos Authentication credentials and tickets</li>
 	 *	<li>"All" clears all of the above</li>
 	 * </ul>
-	 * 
+	 *
 	 * @param {function} success Callback function to invoke upon successful completion of the request.
 	 * @param {function} fail Callback function to invoke if the request cannot be completed.
-	 * 
+	 *
 	 * @example
 	 * <pre class="prettyprint"><code>
 	 * function gdccOnSuccess(response) {
      *  console.log("The function call succeeded.");
 	 * };
-     * 
+     *
 	 * function gdccOnError(response) {
      *   console.log("The function call failed: " + response);
      * };
-     * 
+     *
      * function clearCredential(){
      *  var method = "HTTPDigest";
      *  try {
@@ -993,46 +993,46 @@
 
 	/**
 	 * @function GDCacheController#kerberosAllowDelegation
-	 * 
-	 * @description Call this function to allow or disallow Kerberos delegation within Good Dynamics 
-	 * secure communications. By default, Kerberos delegation is not allowed.  When Kerberos delegation 
+	 *
+	 * @description Call this function to allow or disallow Kerberos delegation within Good Dynamics
+	 * secure communications. By default, Kerberos delegation is not allowed.  When Kerberos delegation
 	 * is allowed, the Good Dynamics run-time behaves as follows:
-	 * 
+	 *
 	 * <ul>
 	 *	<li>Kerberos requests will be for tickets that can be delegated.</li>
-	 *	<li>Application servers that are trusted for delegation can be sent tickets that can be 
+	 *	<li>Application servers that are trusted for delegation can be sent tickets that can be
 	 *      delegated, if such tickets were issued.</li>
 	 * </ul>
-	 * 
+	 *
 	 * When Kerberos delegation is not allowed, the Good Dynamics run-time behaves as follows:
-	 * 
+	 *
 	 * <ul>
 	 *	<li>Kerberos requests will not be for tickets that can be delegated.</li>
 	 *	<li>No application server will be sent tickets that can be delegated, even if such tickets were issued.</li>
 	 * </ul>
-	 * 
-	 * After this function has been called, delegation will remain allowed or disallowed until this function is 
-	 * called again with a different setting.  When this function is called, the Kerberos ticket and credentials 
-	 * caches will be cleared. I.e. there is an effective call to the clearCredentialsForMethod: function with an 
-	 * NSURLAuthenticationMethodNegotiate parameter.  Note: User and service configuration in the Kerberos Domain 
-	 * Controller (typically a Microsoft Active Directory server) is required in order for delegation to be 
-	 * successful. On its own, calling this function will not make Kerberos delegation work in the whole end-to-end 
-	 * application. 
-	 * 
-	 * @param {boolean} allow true to allow delegation, false to disallow. 
+	 *
+	 * After this function has been called, delegation will remain allowed or disallowed until this function is
+	 * called again with a different setting.  When this function is called, the Kerberos ticket and credentials
+	 * caches will be cleared. I.e. there is an effective call to the clearCredentialsForMethod: function with an
+	 * NSURLAuthenticationMethodNegotiate parameter.  Note: User and service configuration in the Kerberos Domain
+	 * Controller (typically a Microsoft Active Directory server) is required in order for delegation to be
+	 * successful. On its own, calling this function will not make Kerberos delegation work in the whole end-to-end
+	 * application.
+	 *
+	 * @param {boolean} allow true to allow delegation, false to disallow.
 	 * @param {function} success Callback function to invoke upon successful completion of the request.
 	 * @param {function} fail Callback function to invoke if the request cannot be completed.
-	 * 
+	 *
 	 * @example
 	 * <pre class="prettyprint"><code>
 	 * function gdccOnSuccess(response) {
      *  console.log("The function call succeeded.");
 	 * };
-	 * 
+	 *
 	 * function gdccOnError(response) {
      *  console.log("The function call failed: " + response);
 	 * };
-	 * 
+	 *
 	 * function clearCredential(){
      *  try {
      *      window.plugins.GDCacheController.kerberosAllowDelegation(true, gdccOnSuccess, gdccOnError);
@@ -1041,8 +1041,8 @@
      *  };
 	 * }
 	 * </code></pre>
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	GDCacheController.prototype.kerberosAllowDelegation = function(allow, success, fail) {
 		if(allow === true || allow === false)
@@ -1050,7 +1050,7 @@
 		else
 			console.log("Invalid boolean value passed to GDCacheController.kerberosAllowDelegation. Type: " + typeof allow);
 	};
-	
+
 	// ***** END: MODULE METHOD DEFINITIONS - GDCacheController *****
 
 	// Install the plugin.
@@ -1073,7 +1073,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
 
 ;(function() {
   var cordovaRef = window.PhoneGap || window.Cordova || window.cordova;
-  var ProgressEvent = (function() {  
+  var ProgressEvent = (function() {
       return function ProgressEvent(type, dict) {
            this.type = type;
            this.bubbles = false;
@@ -1093,20 +1093,20 @@ if (!window.Cordova) window.Cordova = window.cordova;
       pe.total = result.total;
       return pe;
   }
-  
+
 //********************GDLocalFileSystem***********************//
   /**
    * @class GDLocalFileSystem
    * @classdesc This object provides a way to obtain root secure file systems. GDFileSystem
    *
-   * 
+   *
    */
   var GDLocalFileSystem = function() {
   };
-  
+
   GDLocalFileSystem.TEMPORARY = 0; //temporary, with no guarantee of persistence
   GDLocalFileSystem.PERSISTENT = 1; //persistent
-  
+
   /**
    * @function GDLocalFileSystem#gdRequestFileSystem
    * @description gdRequestFileSystem - Request a secure file system in which to store application data.
@@ -1116,6 +1116,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
    * @param {function} errorCallback invoked if error occurs retrieving the secure file system
    */
   var gdRequestFileSystem = function(type, size, successCallback, errorCallback) {
+    console.log('--> gdRequestFileSystem');
 	  var fail = function(code) {
 		  if (typeof errorCallback === 'function') {
 			  errorCallback(new FileError(code));
@@ -1140,23 +1141,23 @@ if (!window.Cordova) window.Cordova = window.cordova;
 	  	  cordovaRef.exec(success, fail, "GDStorage", "requestFileSystem", [type, size]);
 	  }
   };
-  
+
   /**
    * @function GDLocalFileSystem#gdResolveLocalFileSystemURI
    * @description gdResolveLocalFileSystemURI Look up file system Entry referred to by local URI.
    * @param {string}  uri URI referring to a local file or directory
    * @param {function} successCallback invoked with Entry object corresponding to URI
    * @param {function} errorCallback invoked if error occurs retrieving file system entry
-   * 
+   *
    * @example
    * <p class="p3"><br></p>
    * <p class="p4">GDLocalFileSystem<span class="s3"> overrides the PhoneGap </span>LocalFileSystem <span class="s3">object</span></p>
    * <p class="p1">Sample Code for <span class="s1">LocalFileSystem</span>: </p>
    * <p class="p2"><span class="s2"><a href="http://docs.phonegap.com/en/1.7.0/cordova_file_file.md.html%22%20%5Cl%20%22LocalFileSystem">http://docs.phonegap.com/en/1.7.0/cordova_file_file.md.html#LocalFileSystem</a></span></p>
    * <p class="p3"><br></p>
-   * 
+   *
    */
-  
+
   var gdResolveLocalFileSystemURI = function(uri, successCallback, errorCallback) {
 	  // error callback
       var fail = function(error) {
@@ -1187,8 +1188,8 @@ if (!window.Cordova) window.Cordova = window.cordova;
       };
       cordovaRef.exec(success, fail, "GDStorage", "resolveLocalFileSystemURI", [uri]);
   };
-  
-//**************GDFileSystem****************// 
+
+//**************GDFileSystem****************//
     /**
    * @class GDFileSystem
    * @classdesc An interface representing a secure file system
@@ -1196,15 +1197,18 @@ if (!window.Cordova) window.Cordova = window.cordova;
    * @property {DirectoryEntry} root directory of the file system (readonly)
    */
   var GDFileSystem = function(name, root) {
+    console.log('--> GDFileSystem');
+    console.log('name', name);
+    console.log('root', root);
 	  this.name = name || null;
 	  this.root = new GDDirectoryEntry("GDDocuments", "/");
   };
-  
+
   /**
    * @function GDFileSystem#exportLogFileToDocumentsFolder
-   * @description Call this function to create a dump of Good Dynamics activity logs. 
-   * The logs will be dumped to a file that is outside the secure store, in the Documents folder. 
-   * The file will not be encrypted. 
+   * @description Call this function to create a dump of Good Dynamics activity logs.
+   * The logs will be dumped to a file that is outside the secure store, in the Documents folder.
+   * The file will not be encrypted.
    */
   GDFileSystem.prototype.exportLogFileToDocumentsFolder = function(successCallback, errorCallback) {
 	  var win = typeof successCallback !== 'function' ? null : function(result) {
@@ -1215,20 +1219,20 @@ if (!window.Cordova) window.Cordova = window.cordova;
 	  };
 	  cordovaRef.exec(win, fail, "GDStorage", "exportLogFileToDocumentsFolder", []);
   };
-  
+
   /**
    * @function GDFileSystem#uploadLogs
-   * @description Call this function to upload Good Dynamics activity logs for support purposes. 
+   * @description Call this function to upload Good Dynamics activity logs for support purposes.
    * The logs will be uploaded to a server in the Good Technology Network Operation Center (NOC).
    * Upload takes place in background and is retried as necessary.
-   * 
+   *
    * @example
    * <p class="p3"><br></p>
    * <p class="p1"><span class="s1">GDFileSystem</span> overrides the PhoneGap <span class="s1">FileSystem </span>object</p>
    * <p class="p1">Sample Code for <span class="s1">FileSystem</span>: </p>
    * <p class="p2"><span class="s2"><a href="http://docs.phonegap.com/en/1.7.0/cordova_file_file.md.html%22%20%5Cl%20%22FileSystem">http://docs.phonegap.com/en/1.7.0/cordova_file_file.md.html#FileSystem</a></span></p>
    * <p class="p3"><br></p>
-   * 
+   *
    */
   GDFileSystem.prototype.uploadLogs = function(successCallback, errorCallback) {
 	  var win = typeof successCallback !== 'function' ? null : function(result) {
@@ -1239,8 +1243,8 @@ if (!window.Cordova) window.Cordova = window.cordova;
 	  };
 	  cordovaRef.exec(win, fail, "GDStorage", "uploadLogs", []);
   };
-  
-//********GDDirectoryEntry**********************// 
+
+//********GDDirectoryEntry**********************//
   /**
    * @class GDDirectoryEntry
    * @classdesc An interface representing a directory on the file system.
@@ -1265,7 +1269,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
   GDDirectoryEntry.prototype.createReader = function() {
 	  return new GDDirectoryReader(this.fullPath);
   };
-  
+
   /**
    * @function GDDirectoryEntry#getDirectory
    * @description getDirectory Creates or looks up a directory
@@ -1285,7 +1289,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
 	  };
 	  cordovaRef.exec(win, fail, "GDStorage", "getDirectory", [this.fullPath, path, create]);
   };
-  
+
   /**
    * @function GDDirectoryEntry#removeRecursively
    * @description Deletes a directory and all of it's contents
@@ -1301,14 +1305,17 @@ if (!window.Cordova) window.Cordova = window.cordova;
 
   /**
    * @function GDDirectoryEntry#getFile
-   * @description Creates or looks up a file. 
+   * @description Creates or looks up a file.
    * @param {string} path either a relative or absolute path from this directory in which to look up or create a file
    * @param {Flags} options to create or exclusively create the file
    * @param {function} successCallback is called with the new entry
    * @param {function} errorCallback is called with a FileError
-   * 
+   *
    */
   GDDirectoryEntry.prototype.getFile = function(path, options, successCallback, errorCallback) {
+    console.log('--> getFile');
+    console.log('path', path);
+    console.log('options', options);
 	  var win = typeof successCallback !== 'function' ? null : function(result) {
           var entry = new GDFileEntry(result.name, result.fullPath);
           successCallback(entry);
@@ -1318,7 +1325,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
       };
       cordovaRef.exec(win, fail, "GDStorage", "getFile", [this.fullPath, path, options]);
   };
-  
+
   //**************************Common to Entry (GDDirectoryEntry)******************************//
   /**
    * @function GDDirectoryEntry#getMetadata
@@ -1431,15 +1438,15 @@ if (!window.Cordova) window.Cordova = window.cordova;
   /**
    * @function GDDirectoryEntry#toURL
    * @description Return a URL that can be used to identify this entry.
-   * 
+   *
    * @example
    * <p class="p3"><br></p>
    * <p class="p1"><span class="s1">GDDirectoryEntry</span> overrides the PhoneGap <span class="s1">DirectoryEntry</span> object</p>
    * <p class="p1">Sample Code for <span class="s1">DirectoryEntry</span> : </p>
    * <p class="p2"><span class="s2"><a href="http://docs.phonegap.com/en/1.7.0/cordova_file_file.md.html%22%20%5Cl%20%22DirectoryEntry">http://docs.phonegap.com/en/1.7.0/cordova_file_file.md.html#DirectoryEntry</a></span></p>
    * <p class="p3"><br></p>
-   * 
-   * 
+   *
+   *
    */
   GDDirectoryEntry.prototype.toURL = function() {
       // fullPath attribute contains the full URL
@@ -1489,7 +1496,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
       };
       cordovaRef.exec(win, fail, "GDStorage", "getParent", [this.fullPath]);
   };
-  
+
   //************************** GDFileEntry ******************************//
   /**
    * @class GDFileEntry
@@ -1501,13 +1508,16 @@ if (!window.Cordova) window.Cordova = window.cordova;
    * @property {FileSystem} filesystem on which the directory resides (readonly) - not supported by Cordova
    */
    var GDFileEntry = function(name, fullPath) {
+     console.log('--> GDFileEntry');
+    console.log('name', name);
+    console.log('fullPath', fullPath);
 	  this.isFile = true;
       this.isDirectory = false;
       this.name = name || '';
       this.fullPath = fullPath || '';
       this.filesystem = null;
   };
-  
+
   /**
    * @function GDFileEntry#file
    * @description Returns a File that represents the current state of the file that this FileEntry represents.
@@ -1524,7 +1534,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
       };
       cordovaRef.exec(win, fail, "GDStorage", "getFileMetadata", [this.fullPath]);
   };
-  
+
   /**
    * @function GDFileEntry#createWriter
    * @descriptionCreates a new FileWriter associated with the file that this FileEntry represents.
@@ -1546,7 +1556,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
           }
       }, errorCallback);
   };
-  
+
   //**************************Common to Entry (GDFileEntry)******************************//
   /**
    * @function GDFileEntry#getMetadata
@@ -1659,15 +1669,15 @@ if (!window.Cordova) window.Cordova = window.cordova;
   /**
    * @function GDFileEntry#toURL
    * @description Return a URL that can be used to identify this entry.
-   *  
+   *
    * @example
    * <p class="p3"><br></p>
    * <p class="p1"><span class="s1">GDFileEntry</span> overrides the PhoneGap <span class="s1">FileEntry </span>object</p>
    * <p class="p1">Sample Code for <span class="s1">FileEntry </span>: </p>
    * <p class="p2"><span class="s2"><a href="http://docs.phonegap.com/en/1.7.0/cordova_file_file.md.html%22%20%5Cl%20%22FileEntry">http://docs.phonegap.com/en/1.7.0/cordova_file_file.md.html#FileEntry</a></span></p>
    * <p class="p3"><br></p>
-   * 
-   * 
+   *
+   *
    */
   GDFileEntry.prototype.toURL = function() {
       // fullPath attribute contains the full URL
@@ -1717,7 +1727,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
       };
       cordovaRef.exec(win, fail, "GDStorage", "getParent", [this.fullPath]);
   };
-  
+
   //************************* GDDirectoryReader *****************************//
   /**
    * @class GDDirectoryReader
@@ -1764,8 +1774,8 @@ if (!window.Cordova) window.Cordova = window.cordova;
       cordovaRef.exec(win, fail, "GDStorage", "readEntries", [this.path]);
   };
 
-  
- //************************************* GDFile **********************// 
+
+ //************************************* GDFile **********************//
   /**
    * @class GDFile
    * @classdesc This object contains attributes of a single file.
@@ -1780,34 +1790,38 @@ if (!window.Cordova) window.Cordova = window.cordova;
    * <p class="p1">Sample Code for <span class="s1">File </span>: </p>
    * <p class="p2"><span class="s2"><a href="http://docs.phonegap.com/en/1.7.0/cordova_file_file.md.html%22%20%5Cl%20%22File">http://docs.phonegap.com/en/1.7.0/cordova_file_file.md.html#File</a></span></p>
    * <p class="p3"><br></p>
-   * 
+   *
    */
   var GDFile = function(name, fullPath, type, lastModifiedDate, size){
+    console.log('--> GDFile');
+    console.log('name', name);
+    console.log('fullPath', fullPath);
+    console.log('type', type);
       this.name = name || '';
       this.fullPath = fullPath || null;
       this.type = type || null;
       this.lastModifiedDate = lastModifiedDate || null;
       this.size = size || 0;
   };
-	  
-	
+
+
 //************************************ GDFileReader ****************************
   /**
    * @class GDFileReader
-   * @classdesc GDFileReader is an object that allows one to read a file from the Good Dynamics secure file system. 
+   * @classdesc GDFileReader is an object that allows one to read a file from the Good Dynamics secure file system.
    * Implements the GDFileSystem APIs.
    * @property {string} fileName File name of a secured file.
-   * @property {integer} readyState One of the three states the reader can be in EMPTY, LOADING or DONE.		
+   * @property {integer} readyState One of the three states the reader can be in EMPTY, LOADING or DONE.
    * @property {string} result The contents of the file that has been read. .
    * @property {FileError} error An object containing errors.
    * @property {function}	onloadstart Called when the read starts.
-   * @property {function} onprogress Called while reading the file, reports progress (progess.loaded/progress.total). 
+   * @property {function} onprogress Called while reading the file, reports progress (progess.loaded/progress.total).
    * -NOT SUPPORTED
-   * @property {function} onload Called when the read has successfully completed.			
-   * @property {function} onerror Called when the read has been aborted. For instance, by invoking the abort() method.		
+   * @property {function} onload Called when the read has successfully completed.
+   * @property {function} onerror Called when the read has been aborted. For instance, by invoking the abort() method.
    * @property {function} onloadend Called when the read has failed.
-   * @property {function} onabort  Called when the request has completed (either in success or failure).	
-   */	
+   * @property {function} onabort  Called when the request has completed (either in success or failure).
+   */
 
   //get native FileReader
   function getOriginalSymbol(context, symbolPath) {
@@ -1825,6 +1839,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
 
   var GDFileReader = function()
   {
+    console.log('--> GDFileReader');
     this.fileName = "";
     this.readyState = 0; // FileReader.EMPTY
     // File data
@@ -1840,22 +1855,22 @@ if (!window.Cordova) window.Cordova = window.cordova;
 	  this.onloadend = null;      // When the request has completed (either in success or failure).
 	  this.onabort = null;        // When the read has been aborted. For instance, by invoking the abort() method.
   };
-  
+
   // States
   GDFileReader.EMPTY = 0;
   GDFileReader.LOADING = 1;
   GDFileReader.DONE = 2;
-  
+
   /**
    * @function GDFileReader#abort
    * @description abort -  Aborts reading file.
    */
-  GDFileReader.prototype.abort = function() 
+  GDFileReader.prototype.abort = function()
   {
 	  this.result = null;
 	  if (this.readyState === GDFileReader.DONE || this.readyState === GDFileReader.EMPTY) {
 		  return;
-	  } 
+	  }
 	  this.readyState = GDFileReader.DONE;
 	  // If abort callback
 	  if (typeof this.onabort === 'function') {
@@ -1866,25 +1881,26 @@ if (!window.Cordova) window.Cordova = window.cordova;
 		  this.onloadend(new ProgressEvent('loadend', {target:this}));
 	  }
   };
-  
+
   /**
    * @function GDFileReader#readAsText
    * @description readAsText - Reads text file.
    * @param {GDFile} file function to invoke upon successful completion of the request.
    * @param {string} encoding the encoding to use to encode the file's content. Default is UTF8.
    * Not supported in iOS, UTF8 encoding is always used.
-   * 
+   *
    * @example
    * <p class="p3"><br></p>
    * <p class="p1"><span class="s1">GDFileReader</span> overrides the PhoneGap <span class="s1">FileReader </span>object</p>
    * <p class="p1">Sample Code for <span class="s1">FileReader </span>: </p>
    * <p class="p2"><span class="s2"><a href="http://docs.phonegap.com/en/1.7.0/cordova_file_file.md.html%22%20%5Cl%20%22FileReader">http://docs.phonegap.com/en/1.7.0/cordova_file_file.md.html#FileReader</a></span></p>
    * <p class="p3"><br></p>
-   * 
-   * 
+   *
+   *
    */
-  GDFileReader.prototype.readAsText = function(file, encoding) 
+  GDFileReader.prototype.readAsText = function(file, encoding)
   {
+    console.log('--> readAsText');
 	  // Figure out pathing
 	  this.fileName = '';
 	  if (typeof file.fullPath === 'undefined') {
@@ -1908,7 +1924,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
 	  // Read file
 	  cordovaRef.exec(
 			  // Success callback
-			  function(r) {    
+			  function(r) {
                   // If DONE (cancelled), then don't do anything
                   if (me.readyState === GDFileReader.DONE) {
                       return;
@@ -1956,7 +1972,9 @@ if (!window.Cordova) window.Cordova = window.cordova;
    * A data url is of the form: data:[<mediatype>][;base64],<data>
    * @param {GDFile} file File object containing file properties
    */
-  GDFileReader.prototype.readAsDataURL = function(file) {  
+  GDFileReader.prototype.readAsDataURL = function(file) {
+    console.log('--> readAsDataURL');
+    console.log('file', file);
 	  this.fileName = "";
       if (typeof file.fullPath === "undefined") {
           this.fileName = file;
@@ -2052,18 +2070,18 @@ if (!window.Cordova) window.Cordova = window.cordova;
             if (me.readyState === FileReader.DONE) {
                 return;
             }
-                  
+
             // DONE state
             me.readyState = FileReader.DONE;
-                  
+
             // Save result
             me.result = r;
-                  
+
             // If onload callback
             if (typeof me.onload === "function") {
                 me.onload(new ProgressEvent("load", {target:me}));
             }
-                  
+
             // If onloadend callback
             if (typeof me.onloadend === "function") {
                 me.onloadend(new ProgressEvent("loadend", {target:me}));
@@ -2122,18 +2140,18 @@ if (!window.Cordova) window.Cordova = window.cordova;
             if (me.readyState === FileReader.DONE) {
                 return;
             }
-                
+
             // DONE state
             me.readyState = FileReader.DONE;
-                
+
                     // Save result
             me.result = r;
-            
+
             // If onload callback
             if (typeof me.onload === "function") {
                 me.onload(new ProgressEvent("load", {target:me}));
             }
-                
+
             // If onloadend callback
             if (typeof me.onloadend === "function") {
                 me.onloadend(new ProgressEvent("loadend", {target:me}));
@@ -2160,7 +2178,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
             }
         }, "GDStorage", "readAsArrayBuffer", [this.fileName]);
   };
-  
+
  //***************************** GDFileWriter ********************************//
   /**
    * @class GDFileWriter
@@ -2225,18 +2243,18 @@ if (!window.Cordova) window.Cordova = window.cordova;
    * @function GDFileWriter#write
    * @Description Writes data to the file
    * @param {string} data to be written. Supports string and binary (Blob and ArrayBuffer)
-   * 
+   *
    * @example
    * <p class="p3"><br></p>
    * <p class="p1"><span class="s1">GDFileWriter</span> overrides the PhoneGap <span class="s1">FileWriter </span>object</p>
    * <p class="p1">Sample Code for <span class="s1">FileWriter</span>: </p>
    * <p class="p2"><span class="s2"><a href="http://docs.phonegap.com/en/1.7.0/cordova_file_file.md.html%22%20%5Cl%20%22FileWriter">http://docs.phonegap.com/en/1.7.0/cordova_file_file.md.html#FileWriter</a></span></p>
    * <p class="p3"><br></p>
-   * 
-   * 
+   *
+   *
    */
   GDFileWriter.prototype.write = function(data) {
-	     
+
       var that = this;
       var supportsBinary = (typeof window.Blob !== 'undefined' && typeof window.ArrayBuffer !== 'undefined');
       var isBinary;
@@ -2431,19 +2449,20 @@ if (!window.Cordova) window.Cordova = window.cordova;
   };
 
   /**
-   * 
+   *
    * @class GDFileTransfer
    * @classdesc FileTransfer uploads a file to a remote server.
    * @constructor
    */
   var GDFileTransfer = function() {
+    console.log('-> GDFileTransfer');
     this.onprogress = null; // optional callback
   };
 
    /**
    * @function GDFileTransfer#upload
    * @Description Given an absolute file path, uploads a file on the device to a remote server
-   * using a multipart HTTP request. 
+   * using a multipart HTTP request.
    * @param filePath {String}           Full path of the file on the device
    * @param server {String}             URL of the server to receive the file
    * @param successCallback (Function}  Callback to be invoked when upload has completed
@@ -2452,6 +2471,12 @@ if (!window.Cordova) window.Cordova = window.cordova;
    * @param trustAllHosts {Boolean} Optional trust all hosts (e.g. for self-signed certs), defaults to false
    */
   GDFileTransfer.prototype.upload = function(filePath, server, successCallback, errorCallback, options, trustAllHosts) {
+    console.log('-> upload');
+    console.log('filePath', filePath);
+    console.log('server', server);
+    console.log('options', options);
+    console.log('trustAllHosts', trustAllHosts);
+
 	  // check for options
       var fileKey = null;
       var fileName = null;
@@ -2472,7 +2497,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
               params = {};
           }
       }
-  
+
       var self = this;
       var win = function(result) {
           if (typeof result.lengthComputable != "undefined") {
@@ -2483,6 +2508,16 @@ if (!window.Cordova) window.Cordova = window.cordova;
               successCallback && successCallback(result);
           }
       }
+
+      console.log('going to invoke native code, GDFileTransfer.upload');
+    console.log('filePath', filePath);
+    console.log('server', server);
+    console.log('fileKey', fileKey);
+    console.log('fileName', fileName);
+    console.log('mimeType', mimeType);
+    console.log('params', params);
+    console.log('trustAllHosts', trustAllHosts);
+    console.log('chunkedMode', chunkedMode);
 
       cordovaRef.exec(win, errorCallback, 'GDFileTransfer', 'upload', [filePath, server, fileKey, fileName, mimeType, params, trustAllHosts, chunkedMode]);
   };
@@ -2496,9 +2531,9 @@ if (!window.Cordova) window.Cordova = window.cordova;
    * @param errorCallback {Function}    Callback to be invoked upon error
    */
   GDFileTransfer.prototype.download = function(source, target, successCallback, errorCallback) {
-  
+
       var self = this;
-  
+
       var win = function(result) {
         if (typeof result.lengthComputable != "undefined") {
             if (self.onprogress) {
@@ -2507,45 +2542,52 @@ if (!window.Cordova) window.Cordova = window.cordova;
         } else {
             var entry = null;
             entry = (result.isDirectory) ? new GDDirectoryEntry(result.name, result.fullPath) : new GDFileEntry(result.name, result.fullPath);
-          
+
             entry.isDirectory = result.isDirectory;
             entry.isFile = result.isFile;
             successCallback(entry);
         };
       }
-      
+
       cordovaRef.exec(win, errorCallback, 'GDFileTransfer', 'download', [source, target]);
   };
-  
+
    /**
-   * 
+   *
    * @classs GDSecureStorage
    * @classdescc FileTransfer uploads a file to a remote server.
    * @constructor
    */
-  var GDSecureStorage = function() {};
+  var GDSecureStorage = function() {
+    console.log("--> GDSecureStorage")
+   };
 
   /* Local Storage */
   var storageDictionary;    // the dictionary to hold local storage
   var secureStorage;         // global GDSecureStorage object for local storage functions
 
   GDSecureStorage.prototype.setItem = function(key, value) {
-  
+    console.log('--> setItem');
+    console.log('key', key);
+    console.log('value', value);
+
         if ( !storageDictionary ) {
             storageDictionary = new Object();
         }
-        
+
         // keep local java script dictionary in sync
         storageDictionary[ key ] = value;
-        
+
         cordovaRef.exec(null, null, "GDStorage", "setItem", [key, value]);
   };
 
   GDSecureStorage.prototype.getItem = function(key) {
-          
+    console.log('--> getItem');
+    console.log('key', key);
+
         // retrieve the result from the storageDictionary
         var resultToReturn;
-        
+
         try {
             resultToReturn = storageDictionary[ key ];
         }
@@ -2556,15 +2598,15 @@ if (!window.Cordova) window.Cordova = window.cordova;
 
         return resultToReturn;
   };
-  
+
   GDSecureStorage.prototype.removeItem = function(key) {
-          
+
         delete storageDictionary[ key ];
         cordovaRef.exec(null, null, "GDStorage", "removeStorageItem", [key]);
   };
-  
+
   GDSecureStorage.prototype.length = function() {
-          
+
         var count = 0;
         for (var k in storageDictionary) {
             ++count;
@@ -2574,7 +2616,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
   };
 
   GDSecureStorage.prototype.key = function(index) {
-          
+
         // return the Ith key
         var count = 0;
         for (var k in storageDictionary) {
@@ -2589,16 +2631,16 @@ if (!window.Cordova) window.Cordova = window.cordova;
   };
 
   GDSecureStorage.prototype.clear = function() {
-    
+
         // clear local storage
         storageDictionary = new Object();
-        cordovaRef.exec(null, null, "GDStorage", "clearStorage", []);        
+        cordovaRef.exec(null, null, "GDStorage", "clearStorage", []);
   };
-  
+
   GDSecureStorage.prototype.getDictionary = function() {
 
     // retrieve the dictionary from the plugin
-    cordovaRef.exec( function( result ) { 
+    cordovaRef.exec( function( result ) {
         try {
             storageDictionary = eval( result );
         }
@@ -2606,7 +2648,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
         }
     }, null, "GDStorage", "getDictionary", []);
   };
-  
+
   //***************************** sqlite3enc_import ********************************//
 
   /**
@@ -2616,19 +2658,19 @@ if (!window.Cordova) window.Cordova = window.cordova;
    * @property {string} destFilename Full path of the database to be created. If the database already exists, its contents will be overwritten.
    * @param successCallback (Function}  Callback to be invoked when upload has completed
    * @param errorCallback {Function}    Callback to be invoked upon error
-   * 
-   * 
+   *
+   *
    * @example
    * <pre class="prettyprint"><code>
    * function success(dbFile) {
    *     console.log("Imported Database Path: " + dbFile.fullPath);
    *     db = window.openDatabase(dbFile.fullPath, "1.0", "Secure SQLite", 200000);
    * }
-   * 
+   *
    * function fail(error) {
    *     alert(error.code);
    * }
-   * 
+   *
    * function importSQLiteFile(entry) {
    *  sqlite3enc_import(entry.fullPath,"/SecureSQLite3.db",success,fail);
    * }
@@ -2645,20 +2687,20 @@ if (!window.Cordova) window.Cordova = window.cordova;
     var fail = typeof errorCallback !== 'function' ? null : function(code) {
         errorCallback(new FileError(code));
     };
-    
+
     cordovaRef.exec(win, fail, "GDStorage", "sqlite3enc_import", [srcFilename, destFilename]);
   };
-  
+
 //***************************** GDSQLitePlugin ********************************//
 /**
  * @class GDSQLitePlugin
  * @classdesc GDSQLitePlugin is a Secure Database object. Use this Object to manipulate the data.
- * 
+ *
  * @property {string} name The name of the database.
  * @property {string} version The version of the database.
  * @property {string} displayName The display name of the database.
  * @property {integer} size The size of the database in bytes.
- * 
+ *
  */
   var GDSQLitePlugin, GDSQLitePluginTransaction, counter, getOptions, root, exec;
   root = this;
@@ -2678,7 +2720,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
 
     this.dbargs = dbargs;
     this.dbname = dbargs.name;
-    
+
     dbargs.name = this.dbname;
 
     this.openSuccess = openSuccess;
@@ -2787,7 +2829,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
  * @class GDSQLitePluginTransaction
  * @classdesc GDSQLitePluginTransaction is an object that contains methods that allow the user to execute SQL statements against the secure Database.
  * @property {string} db database object which the transaction is executing against.
- * 
+ *
  */
   GDSQLitePluginTransaction = function(db, fn, error, success) {
     if (typeof fn !== 'function') {
@@ -2830,17 +2872,17 @@ if (!window.Cordova) window.Cordova = window.cordova;
 * @param {array} values Array of arguments for the SQL statement parameters.
 * @param {function} successk Success callback.
 * @param {function} error Error callback.
-* 
+*
 * @example
 * <p class="p3"><br></p>
 * <p class="p4">GDSQLTransaction<span class="s3"> overrides the PhoneGap </span>SQLTransaction <span class="s3">object</span></p>
 * <p class="p1">Sample Code for <span class="s1">SQLTransaction</span>: </p>
 * <p class="p2"><span class="s2"><a href="http://docs.phonegap.com/en/1.7.0/cordova_storage_storage.md.html">http://docs.phonegap.com/en/1.7.0/cordova_storage_storage.md.html#SQLTransaction</a></span></p>
-* <p class="p3"><br></p> 
+* <p class="p3"><br></p>
 */
   GDSQLitePluginTransaction.prototype.executeSql = function(sql, values, success, error) {
     var qid = this.executes.length;
-    
+
     this.db.bg = false;
     this.executes.push({
       qid: qid,
@@ -2859,13 +2901,13 @@ if (!window.Cordova) window.Cordova = window.cordova;
   * @param {array} values Array of arguments for the SQL statement parameters.
   * @param {function} successk Success callback.
   * @param {function} error Error callback.
-  * 
+  *
   * @example
   * <p class="p3"><br></p>
   * <p class="p4">GDSQLTransaction<span class="s3"> overrides the PhoneGap </span>SQLTransaction <span class="s3">object</span></p>
   * <p class="p1">Sample Code for <span class="s1">SQLTransaction</span>: </p>
   * <p class="p2"><span class="s2"><a href="http://docs.phonegap.com/en/1.7.0/cordova_storage_storage.md.html">http://docs.phonegap.com/en/1.7.0/cordova_storage_storage.md.html#SQLTransaction</a></span></p>
-  * <p class="p3"><br></p> 
+  * <p class="p3"><br></p>
   */
   GDSQLitePluginTransaction.prototype.backgroundExecuteSql = function(sql, values, success, error) {
     var qid = this.executes.length;
@@ -3079,8 +3121,8 @@ if (!window.Cordova) window.Cordova = window.cordova;
  * @property {string} displayName The display name of the database.
  * @property {integer} size The size of the database in bytes.
  * @param {function} creationCallback Success callback.
- * @param {function} errorCallback Error callback. 
- * 
+ * @param {function} errorCallback Error callback.
+ *
  * @example
  * <p class="p3"><br></p>
  * <p class="p1"><span class="s1">gdOpenDatabase</span> overrides the PhoneGap <span class="s1">openDatabase </span>object</p>
@@ -3093,14 +3135,14 @@ if (!window.Cordova) window.Cordova = window.cordova;
     deleteDatabase: GDSQLiteFactory.deleteDb
   };
   //***** END: Classes *****//
-  
+
   // Install the plugin.
   cordovaRef.addConstructor(function() {
 
-	  
+
 	  //*******************************************//
 	    if(!window.plugins) window.plugins = {};
-        
+
         LocalFileSystem = GDLocalFileSystem;
         requestFileSystem = gdRequestFileSystem;
         resolveLocalFileSystemURI = gdResolveLocalFileSystemURI;
@@ -3109,18 +3151,18 @@ if (!window.Cordova) window.Cordova = window.cordova;
         DirectoryReader = GDDirectoryReader;
         FileEntry = GDFileEntry;
         File = GDFile;
-        FileReader = GDFileReader;	
+        FileReader = GDFileReader;
         FileWriter = GDFileWriter;
         openDatabase = sqlitePlugin.openDatabase;
 
         FileTransfer = GDFileTransfer;
         sqlite3enc_import=gdSQLite3enc_import;
-         
+
         // Override Storage for local storage
         {
         	secureStorage = new GDSecureStorage();
             secureStorage.getDictionary();
-            
+
             Storage.prototype._setItem = Storage.prototype.setItem;
             Storage.prototype.setItem = function(key, value)
             {
@@ -3129,44 +3171,44 @@ if (!window.Cordova) window.Cordova = window.cordova;
 
             Storage.prototype._getItem = Storage.prototype.getItem;
             Storage.prototype.getItem = function(key)
-            {  
+            {
               return secureStorage.getItem( key );
             }
 
             Storage.prototype._removeItem = Storage.prototype.removeItem;
             Storage.prototype.removeItem = function(key)
-            {  
+            {
               return secureStorage.removeItem( key );
             }
 
             Storage.prototype._key = Storage.prototype.key;
             Storage.prototype.key = function(index)
-            {  
+            {
               return secureStorage.key( index );
             }
 
             Storage.prototype._clear = Storage.prototype.clear;
             Storage.prototype.clear = function()
-            {  
+            {
               return secureStorage.clear();
             }
 
             Storage.prototype._length = Storage.prototype.length;
             Storage.prototype.getLength = function()
-            {  
+            {
               return secureStorage.length();
             }
         }
-        
+
         //Stays the same
         //- MetaData
         //- Flags
         //- FileError
         //- FileTransfer
         //- FileTransferError
-        //- FileUploadOptions 
-        //- FileUploadResult      
-        //- 
+        //- FileUploadOptions
+        //- FileUploadResult
+        //-
    });
 }());
 
@@ -3184,12 +3226,12 @@ if (!window.Cordova) window.Cordova = window.cordova;
 	/**
 	 * @class GDPushChannelResponse
 	 * @classdesc This class encapsulates the response returned from the GDPush class.
-	 * 
+	 *
 	 * @param {string} json The input data (formatted as JSON text) used to construct the
 	 * response object.
-	 * 
+	 *
 	 * @property {string} channelID The unique ID for the push channel that generated this response.
-	 * 
+	 *
 	 * @property {string} responseType This value is used to distinguish what action triggered this response.
 	 * Valid values are:
 	 * <ul>
@@ -3205,22 +3247,22 @@ if (!window.Cordova) window.Cordova = window.cordova;
 	 *   the Good Dynamics Network Operating Center (NOC). If the application server does not respond to a
 	 *   ping, then the NOC notifies the client.</li>
 	 * </ul>
-	 * 
+	 *
 	 * @property {string} responseData This field will be populated with data from the server if the
 	 * response contained data what was intended to be processed by the client.
-	 * 
+	 *
 	 * @return {GDPushChannelResponse}
 	 */
 	var GDPushChannelResponse = function(json) {
 		this.channelID = null;
 		this.responseType = null;
 		this.responseData = null;
-		
+
 		try {
 			var obj = JSON.parse(unescape(json));
 			this.channelID = obj.channelID;
 			this.responseType = obj.responseType;
-			
+
 			/*
 			 * The response could have been JSON text, which we might need to revert to it's
 			 * string representation.
@@ -3238,7 +3280,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
 			this.responseType = "error";
 		}
 	};
-	
+
 	/**
 	 * @class GDPushChannel
 	 * @classdesc This class encapsulates the GD Push Channel object.  The Push Channel framework is a
@@ -3260,7 +3302,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
 	 * that is dynamically optimized for battery and network performance.<br/>
 	 * <br/>
 	 * NOTE: Create a new push channel by calling <a href="GDPushConnection.html#createPushChannel">GDPushConnection.createPushChannel</a>.
-	 * 
+	 *
 	 * @property {function} onChannelResponse This function is the callback handler that is called
 	 * whenever a response is returned from the channel connection.  This function should check
 	 * the value of the responseType returned and determine the required action to take.  If the
@@ -3272,25 +3314,25 @@ if (!window.Cordova) window.Cordova = window.cordova;
 		if(typeof responseCallback === 'function')
 			this.onChannelResponse = responseCallback;
 	};
-	
+
 	/**
 	 * @function GDPushChannel#open
-	 * 
+	 *
 	 * @description Call this function to open the Push Channel. This function can only be called when
 	 * the channel is not open.  This function causes a request for a Push Channel to be sent to the Good
 	 * Dynamics proxy infrastructure Network Operating Center (NOC). The NOC will create the channel, and
 	 * issue a Push Channel token, which can then be used to identify the channel.  Logically, Push
 	 * Channels exist within the Push Connection. Opening a Push Channel will not succeed if the Push
 	 * Connection is not open and operating.
-	 *  
+	 *
 	 * @return {GDPushChannelResponse} A push channel response object in JSON format.  The result should be
 	 * parsed and saved as a GDPushChannelResponse object in the callback handler.  If the channel was
 	 * opened then the response object will be initialize with a channelID property that can be used to
 	 * reference this channel connection.  Additionally, the response will also contain a token that uniquely
 	 * identifies the device associated with this push channel.  Since this is an asynchronous call, the
 	 * response will be returned via the onChannelResponse callback.
-	 * 
-	 * 
+	 *
+	 *
 	 * @example
 	 * <pre class="prettyprint"><code>
 	 * function myPushConnection(){
@@ -3299,13 +3341,13 @@ if (!window.Cordova) window.Cordova = window.cordova;
      *  var savedChannelID = null;
      *  //--GDPushConnection
      *  myConnection = window.plugins.GDPushConnection;
-     *  
+     *
      *  try {
      *       myConnection = window.plugins.GDPushConnection;
      *  } catch(e) {
      *       console.log("Unable to initialize the GD Connection (mConnection).");
      *  }
-     *  
+     *
      *  //-- GDPushChannelResponse
      *  function pushChannelResponse(response){
      *      try {
@@ -3317,13 +3359,13 @@ if (!window.Cordova) window.Cordova = window.cordova;
      *          case "open":
      *              savedChannelID = channelResponse.channelID;
      *              console.log("Channel connection opened with ID :" + savedChannelID);
-     *          
+     *
      *              // send application server the savedChannelID (token) here
-     *          
+     *
      *          case "message":
-     *          
-     *              // handle pushed message from the server 
-     *          
+     *
+     *              // handle pushed message from the server
+     *
      *              break;
      *          case "error":
      *              console.log("Received an error status from the channel connection.");
@@ -3340,13 +3382,13 @@ if (!window.Cordova) window.Cordova = window.cordova;
      *           console.log("Invalid response object sent to channel response callback handler.");
      *      }
      *  };
-     *  
+     *
      *  function pushConnectionOk(){
      *      //-- GDPushChannel
      *      channel = myConnection.createPushChannel(pushChannelResponse);
      *      channel.open();
      *  };
-     *  
+     *
      *  if(myConnection !== "undefined"){
      *       myConnection.isConnected(
      *       function(result) {
@@ -3367,18 +3409,18 @@ if (!window.Cordova) window.Cordova = window.cordova;
 			console.log("onChannelResponse callback handler for GDPushChannel object is null.");
 			return;
 		}
-		
+
 		cordovaRef.exec(this.onChannelResponse, null, "GDPush", "open", ["none"]);
 	};
-	
+
 	/**
 	 * @function GDPushChannel#close
-	 * 
+	 *
 	 * @description Call this function to initiate permanent disconnection of the Push Channel.  This function
 	 * causes a request for Push Channel termination to be sent to the Good Dynamics proxy infrastructure Network
 	 * Operating Center (NOC). The NOC will delete the channel, and invalidate the Push Channel token that was
 	 * issued when the channel was initially opened.
-	 * 
+	 *
 	 * @param {string} channelID The unique ID for the push channel to close.
 	 */
 	GDPushChannel.prototype.close = function(channelID) {
@@ -3386,14 +3428,14 @@ if (!window.Cordova) window.Cordova = window.cordova;
 			console.log("Null channelID passed to GDPushChannel.close.");
 			return;
 		}
-		
+
 		var parms = [channelID];
 		cordovaRef.exec(this.onChannelResponse, this.onChannelResponse, "GDPush", "close", parms);
 	};
-	
+
 	/**
 	 * @class GDPushConnection
-	 * 
+	 *
 	 * @classdesc The Push Connection is the container and conduit for the device's Push Channels. An
 	 * application may open multiple Push Channels; all will be managed within a single Push Connection.
 	 * The Push Connection is automatically established during Good Dynamics authorization processing,
@@ -3403,9 +3445,9 @@ if (!window.Cordova) window.Cordova = window.cordova;
 	 * to switch back on, the GD run-time will re-establish the Push Connection, and resume maintenance.
 	 * Switching off the Push Connection might be an option that the application offers to the end user,
 	 * for example, allowing them to reduce power consumption on the device.
-	 * 
+	 *
 	 * @property {function} onConnected Callback function to invoke after the connection is established.
-	 * 
+	 *
 	 * @property {function} onDisconnected Callback function to invoke after the connection is terminated.
 	 */
 	var GDPushConnection = function() {
@@ -3414,14 +3456,14 @@ if (!window.Cordova) window.Cordova = window.cordova;
 	};
 
 	// ***** BEGIN: MODULE METHOD DEFINITIONS - GDPushConnection *****
-	
+
 	/**
 	 * @function GDPushConnection#initialize
 	 * @description Initialize the push connection in prior to establishing the connection.  This function
 	 * should be called before calling <a href="#connect">GDPushConnection.connect</a>.
-	 * 
+	 *
 	 * @param {function} onConnected Callback function to invoke after the connection is established.
-	 * 
+	 *
 	 * @param {function} onDisconnected Callback function to invoke after the connection is terminated.
 	 */
 	GDPushConnection.prototype.initialize = function(onConnected, onDisconnected) {
@@ -3429,19 +3471,19 @@ if (!window.Cordova) window.Cordova = window.cordova;
 			console.log("ERROR in GDPushConnection.initialize: onConnected parameter is not a function.");
 			return;
 		}
-		
+
 		if(typeof onDisconnected !== 'function') {
 			console.log("ERROR in GDPushConnection.initialize: onDisconnected parameter is not a function.");
 			return;
 		}
-		
+
 		this.onConnected = onConnected;
 		this.onDisconnected = onDisconnected;
 	};
-	
+
 	/**
 	 * @function GDPushConnection#connect
-	 * 
+	 *
 	 * @description Call this function to establish, or re-establish, the Push Channel connection with the
 	 * Good Dynamics proxy infrastructure Network Operating Center (NOC).
 	 */
@@ -3453,41 +3495,41 @@ if (!window.Cordova) window.Cordova = window.cordova;
 
 		cordovaRef.exec(this.onConnected, this.onDisconnected, "GDPush", "connect", ["none"]);
 	};
-	
+
 	/**
 	 * @function GDPushConnection#disconnect
-	 * 
+	 *
 	 * @description Call this function to terminate the Push Channel connection with the Good Dynamics
 	 * proxy infrastructure Network Operating Center (NOC).
 	 */
 	GDPushConnection.prototype.disconnect = function() {
 		cordovaRef.exec(this.onConnected, this.onDisconnected, "GDPush", "disconnect", ["none"]);
 	};
-	
+
 	/**
 	 * @function GDPushConnection#createPushChannel
-	 * 
+	 *
 	 * @description Call this function to create a new push channel to receive notifications
 	 * from an application server.  Push Channels can only be established when the Push Connection
 	 * is open and operating.
-	 * 
+	 *
 	 * @param {function} responseCallback Callback function to invoke whenever a response is received by
 	 * this push channel.
-	 * 
+	 *
 	 * @returns {GDPushChannel}
 	 */
 	GDPushConnection.prototype.createPushChannel = function(responseCallback) {
 		return new GDPushChannel(responseCallback);
 	};
-	
+
 	/**
 	 * @function GDPushConnection#parseChannelResponse
-	 * 
+	 *
 	 * @description Call this function to transform the push channel response text into a
 	 * GDPushChannelResponse object.
-	 * 
+	 *
 	 * @param {string} responseText A string representing the push channel response text.
-	 * 
+	 *
 	 * @return {GDPushChannelResponse} The push channel response object.
 	 */
 	GDPushConnection.prototype.parseChannelResponse = function(responseText) {
@@ -3496,20 +3538,20 @@ if (!window.Cordova) window.Cordova = window.cordova;
 
 	/**
 	 * @function GDPushConnection#isConnected
-	 * 
-	 * @description This function returns the current status of the Push Channel connection. 
-	 * 
+	 *
+	 * @description This function returns the current status of the Push Channel connection.
+	 *
 	 * @param {function} responseCallback Callback function to invoke when the function returns.
 	 * A single result string will be passed as the input to the callback function: "true" or
 	 * "false".
-	 * 
+	 *
 	 *  @return {boolean} "true" or "false".
 	 */
 	GDPushConnection.prototype.isConnected = function(responseCallback) {
 		cordovaRef.exec(responseCallback, responseCallback, "GDPush", "isConnected", ["none"]);
 	};
 
-	
+
 	// ***** END: MODULE METHOD DEFINITIONS - GDPushConnection *****
 
 	// Install the plugin.
@@ -3524,10 +3566,10 @@ if (!window.Cordova) window.Cordova = window.cordova;
 /*
  * (c) 2015 Good Technology Corporation. All rights reserved.
  */
- 
+
 ;(function() {
   var cordovaRef = window.PhoneGap || window.Cordova || window.cordova;
-  
+
   /**
    * @class GDInterAppCommunication
    *
@@ -3543,18 +3585,18 @@ if (!window.Cordova) window.Cordova = window.cordova;
         console.log("Null serviceId passed to GDInterAppCommunication.getGDAppDetails.");
         return;
     }
-  
+
     if(typeof onSuccess !== 'function') {
         console.log("ERROR in GDInterAppCommunication.getGDAppDetails: onSuccess parameter is not a function.");
         return;
     }
-  
+
     var parms = [serviceId, version];
     cordovaRef.exec(onSuccess, onError, "GDInterAppCommunication", "getGDAppDetails", parms);
   };
-  
+
   // ***** END: MODULE METHOD DEFINITIONS - GDInterAppCommunication *****
-  
+
   // Install the plugin.
   cordovaRef.addConstructor(function() {
     if(!window.plugins) window.plugins = {};
@@ -3569,27 +3611,27 @@ if (!window.Cordova) window.Cordova = window.cordova;
 
 ;(function() {
 	var cordovaRef = window.PhoneGap || window.Cordova || window.cordova;
-		
+
 	/**
 	 * @class GDApplication
-	 * 
+	 *
 	 * @classdesc The GD Application object provides access to information that is globally available to
 	 * any Good Dynamics Application.
 	 */
 	var GDApplication = function() {};
 
 	// ***** BEGIN: MODULE METHOD DEFINITIONS - GDApplication *****
-	
+
 	/**
 	 * @function GDApplication#getApplicationConfig
-	 * 
+	 *
 	 * @description This function returns a collection of configuration settings. The settings will have
 	 * been entered in the Good Control (GC) console, and retrieved by the Good Dynamics run-time.
-	 * 
+	 *
 	 * @param {function} onSuccess Callback function to invoke when the function returns successfully.
-	 * 
+	 *
 	 * @param {function} onError Callback function to invoke for error conditions.
-	 * 
+	 *
 	 * @return {Object} A JSON string representing a configuration dictionary of name/value pairs.  Use
 	 * the JSON.parse function to transform the data into a JavaScript object.
 	 * <table border="1" style="border-spacing:0px;">
@@ -3633,7 +3675,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
 	 *     in the GC console.</td>
 	 * </tr>
 	 * </table>
-	 * 
+	 *
 	 * @example
 	 * <pre class="prettyprint"><code>
 	 * function success(result) {
@@ -3644,84 +3686,84 @@ if (!window.Cordova) window.Cordova = window.cordova;
      *       console.log("Unable to parse configuration JSON format: " + result);
      * }
      * };
-     * 
+     *
      * function fail(result) {
      *   console.log("An error occurred while retrieving the application configuration: " + result);
      * };
-     * 
+     *
      * function getApplicationConfiguration(){
      *   window.plugins.GDApplication.getApplicationConfig(success,fail);
      * };
 	 * </code></pre>
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 */
 	GDApplication.prototype.getApplicationConfig = function(onSuccess, onError) {
 		if(typeof onSuccess !== 'function') {
 			console.log("ERROR in GDApplication.getApplicationConfig: onSuccess parameter is not a function.");
 			return;
 		}
-		
+
 		cordovaRef.exec(onSuccess, onError, "GDApplication", "getApplicationConfig", ["none"]);
 	};
-	
+
 	/**
 	 * @function GDApplication#getVersion
-	 * 
+	 *
 	 * @description This function returns a string containing the library version in major.minor.build format.
-	 * 
+	 *
 	 * @param {function} onSuccess Callback function to invoke when the function returns successfully.
-	 * 
+	 *
 	 * @param {function} onError Callback function to invoke for error conditions.
-	 * 
+	 *
 	 * @return {string}
-	 * 
+	 *
 	 * @example
 	 * <pre class="prettyprint"><code>
-	 * 
+	 *
 	 * function success(result) {
      *   console.log("Retrieved the version data: " + result);
 	 * };
-	 * 
+	 *
 	 * function fail(result) {
      *   console.log("An error occurred while retrieving the application version: " + result);
 	 * };
-	 * 
-	 * 
+	 *
+	 *
 	 * function getApplicationVersion(){
      * window.plugins.GDApplication.getVersion(success,fail);
 	 * };
 	 * </code></pre>
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	GDApplication.prototype.getVersion = function(onSuccess, onError) {
 		if(typeof onSuccess !== 'function') {
 			console.log("ERROR in GDApplication.getVersion: onSuccess parameter is not a function.");
 			return;
 		}
-		
+
 		cordovaRef.exec(onSuccess, onError, "GDApplication", "getVersion", ["none"]);
 	};
-	
+
 	/**
 	 * @function GDApplication#showPreferenceUI
-	 * 
+	 *
 	 * @description Call this function to show the Good Dynamics (GD) preferences user interface (UI). This is
 	 * the UI in which the end user sets any options that are applied by the library directly, without reference
 	 * to the application. This includes, for example, changing their security password.  This function enables
 	 * the GD preferences UI to be included in the application's own user interface.
-	 * 
+	 *
 	 * @param {function} onSuccess Callback function to invoke when the function returns successfully.
-	 * 
+	 *
 	 * @param {function} onError Callback function to invoke for error conditions.
-	 */	
+	 */
 	GDApplication.prototype.showPreferenceUI = function(onSuccess, onError) {
 		cordovaRef.exec(onSuccess, onError, "GDApplication", "showPreferenceUI", ["none"]);
 	};
-	
-	
+
+
 	// ***** END: MODULE METHOD DEFINITIONS - GDApplication *****
 
 	// Install the plugin.
@@ -3739,7 +3781,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
 
 ;(function() {
 	var cordovaRef = window.PhoneGap || window.Cordova || window.cordova;
-		
+
 	/**
 	 * @class GDDocuments
 	 *
@@ -3760,23 +3802,23 @@ if (!window.Cordova) window.Cordova = window.cordova;
 	var GDDocuments = function() {};
 
 	// ***** BEGIN: MODULE METHOD DEFINITIONS - GDDocuments *****
-	
+
 	/**
 	 * @function GDDocuments#canSendFileToGFE
-	 * 
+	 *
 	 * @description Call this function to check if it is currently possible to send files to the Good For
 	 * Enterprise e-mail and PIM application.  Sending will be possible if:
 	 * <ul>
 	 *   <li>The Good For Enterprise mobile application is installed and activated, and</li>
 	 *   <li>The installed version supports inbound Secure Documents API data exchange.</li>
 	 * </ul>
-	 * 
+	 *
 	 * @param {function} onSuccess Callback function to invoke when the function returns successfully.
-	 * 
+	 *
 	 * @param {function} onError Callback function to invoke for error conditions.
-	 * 
+	 *
 	 * @return {boolean} "true" or "false"
-	 * 
+	 *
 	 * @example
 	 * <pre class="prettyprint"><code>
 	 * function myCanSendFileToGFE(){
@@ -3784,7 +3826,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
      *      if(result === "true" || result === "false")
      *          console.log("GDDocuments.canSendFileToGFE succeeded with result: " + result);
      *  };
-     *  
+     *
      *  function fail(result){
      *      console.log("GDDocuments.canSendFileToGFE error occurred: " + result);
      *  };
@@ -3797,13 +3839,13 @@ if (!window.Cordova) window.Cordova = window.cordova;
 			console.log("ERROR in GDDocuments.canSendFileToGFE: onSuccess parameter is not a function.");
 			return;
 		}
-		
+
 		cordovaRef.exec(onSuccess, onError, "GDDocuments", "canSendFileToGFE", ["none"]);
 	};
-	
+
 	/**
 	 * @function GDDocuments#canSendFileToApplication
-	 * 
+	 *
 	 * @description Call this function to check if it is currently possible to send files to a specified
 	 * other application.  Sending will be possible if:
 	 * <ul>
@@ -3812,14 +3854,14 @@ if (!window.Cordova) window.Cordova = window.cordova;
 	 * </ul>
 	 * @param {string} applicationID The iOS Application ID of the application to check. Note that this
 	 * may be different to the Good Dynamics App ID.
-	 * 
+	 *
 	 * @param {function} onSuccess Callback function to invoke when the function returns successfully.
-	 * 
+	 *
 	 * @param {function} onError Callback function to invoke for error conditions.
-	 * 
+	 *
 	 * @return {boolean} "true" or "false"
-	 * 
-	 * 
+	 *
+	 *
 	 * @example
 	 * <pre class="prettyprint"><code>
 	 * function myCanSendFileToApplication(){
@@ -3827,7 +3869,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
      *      if(result === "true" || result === "false")
      *           console.log("GDDocuments.canSendFileToApplication succeeded with result: " + result);
      *  };
-     *  
+     *
      *  function fail(result){
      *      console.log("GDDocuments.canSendFileToApplication error occurred: " + result);
      *  };
@@ -3840,83 +3882,83 @@ if (!window.Cordova) window.Cordova = window.cordova;
 			console.log("ERROR in GDDocuments.canSendFileToApplication: applicationID is empty.");
 			return;
 		}
-		
+
 		if(typeof onSuccess !== 'function') {
 			console.log("ERROR in GDDocuments.canSendFileToApplication: onSuccess parameter is not a function.");
 			return;
 		}
-		
+
 		cordovaRef.exec(onSuccess, onError, "GDDocuments", "canSendFileToApplication", [applicationID]);
 	};
-	
+
 	/**
 	 * @function GDDocuments#sendFileToGFE
-	 * 
+	 *
 	 * @description Call this function to send a file to the Good For Enterprise (GFE) e-mail and PIM
-	 * application using the Secure Documents API. The file must be in the GD secure store.  
-	 * 
-	 * @param {string} filePath The path, within the secure store, of the file to be sent. 
-	 * 
+	 * application using the Secure Documents API. The file must be in the GD secure store.
+	 *
+	 * @param {string} filePath The path, within the secure store, of the file to be sent.
+	 *
 	 * @param {function} onSuccess Callback function to invoke when the function returns successfully.
-	 * 
+	 *
 	 * @param {function} onError Callback function to invoke for error conditions.
-	 * 
+	 *
 	 * @example
 	 * <pre class="prettyprint"><code>
 	 * function mySendFileToGFE(){
      *  function success(){
      *       console.log("Call succeeded");
      *  };
-     *  
+     *
      *  function fail(){
      *      console.log("An error occurred ");
      *  };
-     *  
+     *
      *  window.plugins.GDDocuments.sendFileToGFE("/SampleFile.txt",success,fail);
-     *  };	
+     *  };
      *  </code></pre>
-     *  
+     *
 	 */
 	GDDocuments.prototype.sendFileToGFE = function(filePath, onSuccess, onError) {
 		if(filePath === null || filePath.trim() === '') {
 			console.log("ERROR in GDDocuments.sendFileToGFE: filePath is empty.");
 			return;
 		}
-		
+
 		if(typeof onSuccess !== 'function') {
 			console.log("ERROR in GDDocuments.sendFileToGFE: onSuccess parameter is not a function.");
 			return;
 		}
-		
+
 		cordovaRef.exec(onSuccess, onError, "GDDocuments", "sendFileToGFE", [filePath]);
 	};
-	
+
 	/**
 	 * @function GDDocuments#sendFileToApplication
-	 * 
+	 *
 	 * @description Call this function to send a file to a specified application, using the Secure Documents
 	 * API. The file must be in the GD secure store.
-	 * 
-	 * @param {string} filePath The path, within the secure store, of the file to be sent. 
-	 * 
+	 *
+	 * @param {string} filePath The path, within the secure store, of the file to be sent.
+	 *
 	 * @param {string} applicationID The iOS Application ID of the application to check. Note that this
 	 * may be different to the Good Dynamics App ID.
-	 * 
+	 *
 	 * @param {function} onSuccess Callback function to invoke when the function returns successfully.
-	 * 
+	 *
 	 * @param {function} onError Callback function to invoke for error conditions.
-	 * 
+	 *
 	 * @example
 	 * <pre class="prettyprint"><code>
 	 * function mySendFileToApplication(){
      *  function success(){
      *       console.log("Call succeeded");
      *  };
-     *  
+     *
      *  function fail(){
      *      console.log("An error occurred ");
      *  };
-     *  
+     *
      *  window.plugins.GDDocuments.sendFileToApplication("/SampleFile.txt", "com.good.gmmiphone", success, fail);
      * };
      *  </code></pre>
@@ -3926,20 +3968,20 @@ if (!window.Cordova) window.Cordova = window.cordova;
 			console.log("ERROR in GDDocuments.sendFileToApplication: filePath is empty.");
 			return;
 		}
-		
+
 		if(applicationID === null || applicationID.trim() === '') {
 			console.log("ERROR in GDDocuments.sendFileToApplication: applicationID is empty.");
 			return;
 		}
-		
+
 		if(typeof onSuccess !== 'function') {
 			console.log("ERROR in GDDocuments.sendFileToApplication: onSuccess parameter is not a function.");
 			return;
 		}
-		
+
 		cordovaRef.exec(onSuccess, onError, "GDDocuments", "sendFileToApplication", [filePath, applicationID]);
 	};
-	
+
 	// ***** END: MODULE METHOD DEFINITIONS - GDDocuments *****
 
 	// Install the plugin.
@@ -3957,11 +3999,11 @@ if (!window.Cordova) window.Cordova = window.cordova;
 
 ;(function() {
   var cordovaRef = window.PhoneGap || window.Cordova || window.cordova;
-  
+
   /**
    * @class GDTokenHelper
    *
-   * @classdesc The GDTokenHelper is used to request token from server side and process 
+   * @classdesc The GDTokenHelper is used to request token from server side and process
    * callback on response
    */
   var GDTokenHelper = function() {};
@@ -3970,15 +4012,15 @@ if (!window.Cordova) window.Cordova = window.cordova;
 
 	/**
 	 * @function GDTokenHelper#getGDAuthToken
-	 * 
+	 *
 	 * @description Call this function to check if it is currently possible to open an app using an url scheme
-	 * 
+	 *
 	 * @param {string} challenge string for the authorization
      *
 	 * @param {function} onSuccess Callback function to invoke when the function returns successfully.
-	 * 
+	 *
 	 * @param {function} onError Callback function to invoke for error conditions.
-	 * 
+	 *
 	 * @example
 	 * <pre class="prettyprint"><code>
 	 *     window.plugins.GDTokenHelper.getGDAuthToken("test",
@@ -3996,13 +4038,13 @@ if (!window.Cordova) window.Cordova = window.cordova;
         console.log("ERROR in GDTokenHelper.getGDAuthToken: onSuccess parameter is not a function.");
         return;
     }
-  
+
     var parms = [challenge];
     cordovaRef.exec(onSuccess, onError, "GDTokenHelper", "getGDAuthToken", parms);
   };
-  
+
   // ***** END: MODULE METHOD DEFINITIONS - GDTokenHelper *****
-  
+
   // Install the plugin.
   cordovaRef.addConstructor(function() {
     if(!window.plugins) window.plugins = {};
@@ -4017,7 +4059,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
 
 ;(function() {
   var cordovaRef = window.PhoneGap || window.Cordova || window.cordova;
-  
+
   /**
    * @class GDAppKinetics
    *
@@ -4029,13 +4071,13 @@ if (!window.Cordova) window.Cordova = window.cordova;
 
 	/**
 	 * @function GDAppKinetics#canLaunchAppUsingUrlScheme
-	 * 
+	 *
 	 * @description Call this function to check if it is currently possible to open an app using an url scheme
-	 * 
+	 *
 	 * @param {function} onSuccess Callback function to invoke when the function returns successfully.
-	 * 
+	 *
 	 * @param {function} onError Callback function to invoke for error conditions.
-	 * 
+	 *
 	 * @example
 	 * <pre class="prettyprint"><code>
 	 *     window.plugins.GDAppKineticsPlugin.canLaunchAppUsingUrlScheme("http://address/App.plist",
@@ -4059,22 +4101,22 @@ if (!window.Cordova) window.Cordova = window.cordova;
         console.log("ERROR in GDAppKineticsPlugin.prototype.canLaunchAppUsingUrlScheme: onError parameter is not a function.");
         return;
     }
-  
+
     var parms = [urlToTest];
     cordovaRef.exec(onSuccess, onError, "GDAppKinetics", "canLaunchAppUsingUrlScheme", parms);
   };
 
 	/**
 	 * @function GDAppKinetics#launchAppUsingUrlScheme
-	 * 
+	 *
 	 * @description Call this function to open an app using an url scheme
-	 * 
+	 *
 	 * @param {string} urlToLaunch url which is registered to the app which should be launched.
-	 * 
+	 *
 	 * @param {function} onSuccess Callback function to invoke when the function returns successfully.
-	 * 
+	 *
 	 * @param {function} onError Callback function to invoke for error conditions.
-	 * 
+	 *
 	 * @example
 	 * <pre class="prettyprint"><code>
 	 *     window.plugins.GDAppKineticsPlugin.launchAppUsingUrlScheme("com.good.gd.example.pg.appkinetics.filebouncer",
@@ -4098,22 +4140,22 @@ if (!window.Cordova) window.Cordova = window.cordova;
         console.log("ERROR in GDAppKineticsPlugin.prototype.launchAppUsingUrlScheme: onError parameter is not a function.");
         return;
     }
-  
+
     var parms = [urlToLaunch];
     cordovaRef.exec(onSuccess, onError, "GDAppKinetics", "launchAppUsingUrlScheme", parms);
   };
 
 	/**
 	 * @function GDAppKinetics#bringAppToFront
-	 * 
+	 *
 	 * @description Call this function to an app to the front of the device
-	 * 
+	 *
 	 * @param {string} applicationId id of the app which should be brought to the front.
-	 * 
+	 *
 	 * @param {function} onSuccess Callback function to invoke when the function returns successfully.
-	 * 
+	 *
 	 * @param {function} onError Callback function to invoke for error conditions.
-	 * 
+	 *
 	 * @example
 	 * <pre class="prettyprint"><code>
 	 *     window.plugins.GDAppKineticsPlugin.launchAppUsingUrlScheme("com.good.gd.example.pg.appkinetics.filebouncer",
@@ -4137,22 +4179,22 @@ if (!window.Cordova) window.Cordova = window.cordova;
         console.log("ERROR in GDAppKineticsPlugin.prototype.bringAppToFront: onError parameter is not a function.");
         return;
     }
-  
+
     var parms = [applicationId];
     cordovaRef.exec(onSuccess, onError, "GDAppKinetics", "bringAppToFront", parms);
   };
-  
+
 	/**
 	 * @function GDAppKinetics#copyFilesToSecureFileSystem
-	 * 
+	 *
 	 * @description Files which are transferred via AppKinetics calls must reside within the secure container.
      * While this is not an issue for applications using most apis to write or read via GDCordova, there is a
      * problem with moving files which are part of the iOS Bundle into the secure container.  This api solves
      * that problem and moves all files within the app bundle into the secure container.
-	 * 
-	 * @param {function} onSuccess Callback function to invoke when the function returns successfully and the 
+	 *
+	 * @param {function} onSuccess Callback function to invoke when the function returns successfully and the
      * parameter to the success function is a string which contains the number of files moved.
-	 * 
+	 *
 	 * @example
 	 * <pre class="prettyprint"><code>
 	 *     window.plugins.GDAppKineticsPlugin.copyFilesToSecureFileSystem(function(result) {
@@ -4168,24 +4210,24 @@ if (!window.Cordova) window.Cordova = window.cordova;
         return;
     }
     var parms = [];      // no parms
-    
+
         // calls success function with number of files copied
     cordovaRef.exec(onSuccess, onSuccess, "GDAppKinetics", "copyAllBundledFilesToSecureFileSystem", parms);
   };
 
 	/**
 	 * @function GDAppKinetics#sendFileToApp
-	 * 
+	 *
 	 * @description Call this function to an app to the front of the device
-	 * 
+	 *
 	 * @param {string} filePath path to the file to send.
-	 * 
+	 *
 	 * @param {string} applicationId id of the app to which the file is sent.
-	 * 
+	 *
 	 * @param {function} onSuccess Callback function to invoke when the function returns successfully.
-	 * 
+	 *
 	 * @param {function} onError Callback function to invoke for error conditions.
-	 * 
+	 *
 	 * @example
 	 * <pre class="prettyprint"><code>
 	 *     window.plugins.GDAppKineticsPlugin.sendFileToApp("Brief GD Inter-Container Communication.pdf", "com.good.gd.example.pg.appkinetics.filebouncer",
@@ -4209,21 +4251,21 @@ if (!window.Cordova) window.Cordova = window.cordova;
         console.log("ERROR in GDAppKineticsPlugin.prototype.sendFileToApp: onError parameter is not a function.");
         return;
     }
-  
+
     var parms = [applicationId, filePath];      // order is applicationId then filePath
     cordovaRef.exec(onSuccess, onError, "GDAppKinetics", "sendFileToApp", parms);
   };
 
 	/**
 	 * @function GDAppKinetics#retrieveFiles
-	 * 
+	 *
 	 * @description Call this function to retreive any waiting files but only for the file transfer service.
-	 * 
+	 *
 	 * @param {function} onSuccess Callback function to invoke when the function returns successfully with a parameter
      * of an array of file paths of the received files.
-	 * 
+	 *
 	 * @param {function} onError Callback function to invoke for error conditions or when no files are waiting.
-	 * 
+	 *
 	 * @example
 	 * <pre class="prettyprint"><code>
 	 *     window.plugins.GDAppKineticsPlugin.retrieveFiles(
@@ -4246,20 +4288,20 @@ if (!window.Cordova) window.Cordova = window.cordova;
         console.log("ERROR in GDAppKineticsPlugin.prototype.retrieveFiles: onError parameter is not a function.");
         return;
     }
-  
+
     var parms = [];      // no parms
     cordovaRef.exec(onSuccess, onError, "GDAppKinetics", "retrieveFiles", parms);
   };
 
 	/**
 	 * @function GDAppKinetics#setReceiveAttachmentsFunction
-	 * 
-	 * @description Call this function to set a function to be called for all files received but only for the file transfer 
+	 *
+	 * @description Call this function to set a function to be called for all files received but only for the file transfer
      * service.  Any currently waiting files will be delivered immediately.
-	 * 
+	 *
 	 * @param {function} receiveFileFunction Callback function to invoke when the function returns successfully with a parameter
      * of an array of file paths of the received files.
-	 * 
+	 *
 	 * @example
 	 * <pre class="prettyprint"><code>
 	 *     window.plugins.GDAppKineticsPlugin.setReceiveAttachmentsFunction(
@@ -4273,20 +4315,20 @@ if (!window.Cordova) window.Cordova = window.cordova;
         console.log("ERROR in GDAppKineticsPlugin.prototype.setReceiveAttachmentsFunction: receiveFile parameter is not a function.");
         return;
     }
-  
+
     var parms = [];      // no parms
     cordovaRef.exec(receiveFileFunction, receiveFileFunction, "GDAppKinetics", "readyToReceiveFile", parms);
   };
-    
+
 	/**
 	 * @function GDAppKinetics#callAppKineticsService
-	 * 
+	 *
 	 * @description Call this function to call any AppKinetics service.
-	 * 
+	 *
 	 * @param {string} applicationId - id of app to send to
-	 * 
+	 *
 	 * @param {string} serviceId id of the service
-	 * 
+	 *
 	 * @param {string} version of the service
      *
 	 * @param {string} method of the service
@@ -4296,15 +4338,15 @@ if (!window.Cordova) window.Cordova = window.cordova;
 	 * @param {array} array of attachements which must reside within secure storage, see copyFilesToSecureFileSystem
      *
 	 * @param {function} onSuccess Callback function to invoke when the function returns successfully.
-	 * 
+	 *
 	 * @param {function} onError Callback function to invoke for error conditions, check the error string returned for cause.
-	 * 
+	 *
 	 * @example
 	 * <pre class="prettyprint"><code>
-	 *     window.plugins.GDAppKineticsPlugin.callAppKineticsService( "com.good.gd.example.pg.appkinetics.filebouncer", 
-     *                      "com.demo.generic.call2", "1.0.0.0", "testMethod-FileAttachment", 
-	 *                     { "arrayEntry-3Elements" : [ "arrayEntry1", "arrayEntry2", "arrayEntry3"], 
-     *                      "dictionary" : {"key1":"value1", "key2":"value2", "key3":"value3"}, "string" : "value" }, 
+	 *     window.plugins.GDAppKineticsPlugin.callAppKineticsService( "com.good.gd.example.pg.appkinetics.filebouncer",
+     *                      "com.demo.generic.call2", "1.0.0.0", "testMethod-FileAttachment",
+	 *                     { "arrayEntry-3Elements" : [ "arrayEntry1", "arrayEntry2", "arrayEntry3"],
+     *                      "dictionary" : {"key1":"value1", "key2":"value2", "key3":"value3"}, "string" : "value" },
 	 *                     [ "Brief GD Inter-Container Communication.pdf" ],     // File attachment
 	 *         function(result) {
 	 *             ok(true, "Email sent");
@@ -4317,7 +4359,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
      *  </code></pre>
 	 */
   GDAppKineticsPlugin.prototype.callAppKineticsService = function(applicationId, serviceId, version, method, parameters, attachments, onSuccess, onError) {
-  
+
     if(typeof onSuccess !== 'function') {
         console.log("ERROR in GDAppKineticsPlugin.prototype.callAppKineticsService: onSuccess parameter is not a function.");
         return;
@@ -4334,21 +4376,21 @@ if (!window.Cordova) window.Cordova = window.cordova;
 
 	/**
 	 * @function GDAppKinetics#sendEmailViaGFE
-	 * 
+	 *
 	 * @description Call this function to send email via GFE (Good For Enterprise)
-	 * 
+	 *
 	 * @param {array} array of recipients email addresses
-	 * 
+	 *
 	 * @param {string} subject of the email
-	 * 
+	 *
 	 * @param {string} text of the email
      *
 	 * @param {array} array of attachements which must reside within secure storage, see copyFilesToSecureFileSystem
      *
 	 * @param {function} onSuccess Callback function to invoke when the function returns successfully.
-	 * 
+	 *
 	 * @param {function} onError Callback function to invoke for error conditions, check the error string returned for cause.
-	 * 
+	 *
 	 * @example
 	 * <pre class="prettyprint"><code>
 	 *     window.plugins.GDAppKineticsPlugin.sendEmailViaGFE( ["sample@good.com"], "Test Email", "Hi, this is a test email", [],
@@ -4363,33 +4405,33 @@ if (!window.Cordova) window.Cordova = window.cordova;
      *  </code></pre>
 	 */
   GDAppKineticsPlugin.prototype.sendEmailViaGFE = function(arrayOfRecipients, subject, emailText, attachments, onSuccess, onError) {
-  
-    cordovaRef.exec(onSuccess, onError, "GDAppKinetics", "callAppKineticsService", 
-                                    [ "com.good.gfeiphone", "com.good.gfeservice.send-email", "1.0.0.0", "sendEmail", 
-                                            { "to" : arrayOfRecipients, "subject" : subject, "body" : emailText }, 
-                                    attachments]);    
+
+    cordovaRef.exec(onSuccess, onError, "GDAppKinetics", "callAppKineticsService",
+                                    [ "com.good.gfeiphone", "com.good.gfeservice.send-email", "1.0.0.0", "sendEmail",
+                                            { "to" : arrayOfRecipients, "subject" : subject, "body" : emailText },
+                                    attachments]);
   };
 
 	/**
 	 * @function GDAppKinetics#readyToProvideService
-	 * 
+	 *
 	 * @description Call this function to provide an app kinetics service
-	 * 
+	 *
 	 * @param {string} serviceName - name of the service.
-	 * 
+	 *
 	 * @param {string} versionOfService - the version of the service
      *
 	 * @param {function} onSuccess Callback function to invoke when the app receives an app kinetics request matching
      * serviceName and service function.  The parameter received in the function is a dictionary of the received parameters
      * and file attachments in any.
-	 * 
+	 *
 	 * @param {function} onError Callback function to invoke for error conditions, check the error string returned for cause.
-	 * 
+	 *
 	 * @example
 	 * <pre class="prettyprint"><code>
-	 *     window.plugins.GDAppKineticsPlugin.readyToProvideService( "com.demo.generic.call", "1.0.0.0", 
+	 *     window.plugins.GDAppKineticsPlugin.readyToProvideService( "com.demo.generic.call", "1.0.0.0",
 	 *         function(result) {
-	 *             ok(true, "Object received from " + result.applicationName + " with service " + result.serviceName + " version - " + result.version + 
+	 *             ok(true, "Object received from " + result.applicationName + " with service " + result.serviceName + " version - " + result.version +
 	 *                 " using method - " + result.method + " with parameters - " + JSON.stringify( result.parameters ) + " and attachments - " + JSON.stringify( result.attachments ));
 	 *             start();
 	 *         },
@@ -4400,12 +4442,12 @@ if (!window.Cordova) window.Cordova = window.cordova;
      *  </code></pre>
 	 */
   GDAppKineticsPlugin.prototype.readyToProvideService = function(serviceName, versionOfService, onSuccess, onError) {
-  
-    cordovaRef.exec(onSuccess, onError, "GDAppKinetics", "readyToProvideService", [ serviceName, versionOfService ]);    
+
+    cordovaRef.exec(onSuccess, onError, "GDAppKinetics", "readyToProvideService", [ serviceName, versionOfService ]);
   };
 
   // ***** END: MODULE METHOD DEFINITIONS - GDAppKinetics *****
-  
+
   // Install the plugin.
   cordovaRef.addConstructor(function() {
     if(!window.plugins) window.plugins = {};
@@ -4427,7 +4469,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
      * @class GDSpecificPolicies
      *
      * @classdesc The GDSpecificPolicies is used to read application-specific policy from Good Control (GC) console and return it in JSON format.
-     * To use this feature you should create policy file in XML format and upload it to the GC for specific application 
+     * To use this feature you should create policy file in XML format and upload it to the GC for specific application
      * (for mere details see following guide: https://community.good.com/view-doc.jspa?fileName=_app_policies.html&docType=api)
      * The settings can be retrieved by calling updatePolicy method below.
      */
@@ -4440,7 +4482,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
      * @description Call this function to retrieve application-specific policy from Good Control (GC) console in JSON format.
      * This method observes the application-policy state and once it is updated on GC we will receive the letest version directly in success callback.
      *
-     * @param {function} successCallback Callback function to invoke when updatePolicy method returns successfully. 
+     * @param {function} successCallback Callback function to invoke when updatePolicy method returns successfully.
      * The policy object is passed to this function as parameter.
      *
      * @param {function} errorCallback Callback function to invoke for error conditions.
@@ -4464,8 +4506,8 @@ if (!window.Cordova) window.Cordova = window.cordova;
 		}
 
 		var parms = [];
-		
-		var success = function(result) {		
+
+		var success = function(result) {
 			var obj = JSON.parse(result);
 			successCallback(obj);
 		};
@@ -4496,11 +4538,11 @@ if (!window.Cordova) window.Cordova = window.cordova;
 	/**
      * @class GDServerSideServices
      *
-     * @classdesc The GDServerSideServices provides ability to use GD Server Based Serveices. 
-     * It returns all the needed information about service in JSON format. 
+     * @classdesc The GDServerSideServices provides ability to use GD Server Based Serveices.
+     * It returns all the needed information about service in JSON format.
      * To use this feature you should bind the service you want to the sample application in Good Control (GC) console.
      * Also you should bind the server where the service itself is hosted to the sample application in GC console.
-     * For example, there is 'Google Timezone service' available on GC to be used in your application. 
+     * For example, there is 'Google Timezone service' available on GC to be used in your application.
      * This service is hosted on following server: maps.googleapis.com on port 443.
      * You should configure your application to be subscribed on above service and to use above server. See GC guide on how to do this.
      * Then when you call callGDServerSideService method with appropriate parameters you will receive all the information about this service.
@@ -4526,7 +4568,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
      * server - host name of the server
      * port - port server is running on
      * priority - the priority of the server
-     * Each service has: 
+     * Each service has:
      * identifier - identifier of the service
      * version - version of the service
      * type - service type
@@ -4535,7 +4577,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
      *
      * @param {string} serviceVersion Service version, for example, "1.0.0.0"
      *
-     * @param {function} successCallback Callback function to invoke when callGDServerSideService method returns successfully. 
+     * @param {function} successCallback Callback function to invoke when callGDServerSideService method returns successfully.
      * The object with information about service is passed to this function as parameter.
      *
      * @param {function} errorCallback Callback function to invoke for error conditions.
@@ -4564,7 +4606,7 @@ if (!window.Cordova) window.Cordova = window.cordova;
 			serviceVersion
 		];
 
-		var success = function(result) {			
+		var success = function(result) {
 			var obj = JSON.parse(result);
 			successCallback(obj);
 		};
