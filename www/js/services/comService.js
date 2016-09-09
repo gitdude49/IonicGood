@@ -1,6 +1,6 @@
 angular.module('starter.services')
 
-  .factory('comService', function ($http, $cordovaDevice, config, good, appinfo, fileService) {
+  .factory('comService', function ($http, $cordovaDevice, config, good, appinfo, fileService, comCordovaService, comGoodService) {
     console.log("--> comService");
 
     var createUrl = function(path, query) {
@@ -68,6 +68,12 @@ angular.module('starter.services')
 
       setHeaders(req);
       console.log(req);
+
+      if (good.isEnabled()) {
+        return comGoodService.doHttp(req);
+      } else {
+        return comCordovaService.doHttp(req);
+      }
 
       return $http(req);
     }
