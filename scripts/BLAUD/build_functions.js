@@ -1,8 +1,8 @@
 "use strict";
 
 var childProcess = require('child_process');
-var fs = require('../node_modules/fs-extra');
-var xml2js = require('../node_modules/xml2js');
+var fs = require('../../node_modules/fs-extra');
+var xml2js = require('../../node_modules/xml2js');
 
 var GOOD_SDK_ENABLED_FILE = "./platforms/android/MIA_GOOD_SDK_IS_ENABLED";
 

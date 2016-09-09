@@ -5,7 +5,7 @@ console.log("- running hook script: " + __filename);
 
 var CORDOVA_ANDROID_VERSION = "4.1.1";
 
-var fs = require("../../scripts/node_modules/fs-extra");
+var fs = require("../../node_modules/fs-extra");
 var bf = require('../../scripts/BLAUD/build_functions.js');
 
 var CORDOVA_ANDROID_VERSION_FILE = "./platforms/android/cordova/version";

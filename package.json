@@ -10,7 +10,8 @@
     "gulp-rename": "^1.2.0",
     "gulp-sass": "^2.0.4",
     "plist": "^2.0.1",
-    "xcode": "^0.8.9"
+    "xcode": "^0.8.9",
+    "xml2js": "^0.4.10"
   },
   "devDependencies": {
     "bower": "^1.3.3",
