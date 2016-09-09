@@ -5,6 +5,7 @@ This repository contains a sample app where a problem with "GD Filetransfer" can
 ## Some specials about this project/repository ##
 
 **Folders/files you will normally not find in GIT**
+
 The Cordova in this repository contains a number of items that are normally not committed to a Git repository:
 
 * files under: ./platorms/
