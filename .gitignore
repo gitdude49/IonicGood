@@ -1,6 +1,46 @@
-# Specifies intentionally untracked files to ignore when using Git
-# http://git-scm.com/docs/gitignore
+*.iml
 
+## Directory-based project format:
+.idea/
+
+## File-based project format:
+*.ipr
+*.iws
+
+## Plugin-specific files:
+
+# IntelliJ
+out/
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+
+# Custom
+.DS_Store
 node_modules/
-platforms/
-plugins/
+/platforms/
+/build/
+/builds/
+/dist/
+/tests.output/
+
+#Plugins
+/plugins/*
+!/plugins/where_are_the_plugins.txt
+!/plugins/com.kofax.cordova
+
+/www/lib/*
+
+npm-debug.log
+appium/temp.screenshots
+.gradle
+
+.idea
