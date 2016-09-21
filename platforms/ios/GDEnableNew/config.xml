@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.blaud.goodenablementnew" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <preference name="AllowInlineMediaPlayback" value="false" />
+    <preference name="BackupWebStorage" value="cloud" />
+    <preference name="DisallowOverscroll" value="false" />
+    <preference name="EnableViewportScale" value="false" />
+    <preference name="KeyboardDisplayRequiresUserAction" value="true" />
+    <preference name="MediaPlaybackRequiresUserAction" value="false" />
+    <preference name="SuppressesIncrementalRendering" value="false" />
+    <preference name="GapBetweenPages" value="0" />
+    <preference name="PageLength" value="0" />
+    <preference name="PaginationBreakingMode" value="page" />
+    <preference name="PaginationMode" value="unpaginated" />
+    <feature name="LocalStorage">
+        <param name="ios-package" value="CDVLocalStorage" />
+    </feature>
+    <feature name="Camera">
+        <param name="ios-package" value="CDVCamera" />
+    </feature>
+    <preference name="CameraUsesGeolocation" value="false" />
+    <feature name="Device">
+        <param name="ios-package" value="CDVDevice" />
+    </feature>
+    <feature name="File">
+        <param name="ios-package" value="CDVFile" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="FileTransfer">
+        <param name="ios-package" value="CDVFileTransfer" />
+    </feature>
+    <name>GDEnableNew</name>
+    <description>
+        Testing the new Good enablement
+    </description>
+    <author email="you@example.com" href="http://example.com.com/">
+      Your Name Here
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="UIWebViewBounce" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="SplashScreenDelay" value="2000" />
+    <preference name="FadeSplashScreenDuration" value="2000" />
+    <preference name="android-minSdkVersion" value="16" />
+    <preference name="BackupWebStorage" value="none" />
+
+
+    <feature name="GDStorage">
+        <param name="ios-package" value="GDCStoragePlugin" />
+    </feature>
+    <feature name="GDApplication">
+        <param name="ios-package" value="GDCApplicationPlugin" />
+    </feature>
+    <feature name="GDDocuments">
+        <param name="ios-package" value="GDCDocumentsPlugin" />
+    </feature>
+    <feature name="GDInterAppCommunication">
+        <param name="ios-package" value="GDInterAppCommunicationPlugin" />
+    </feature>
+    <feature name="GDFileTransfer">
+        <param name="ios-package" value="GDCFileTransferPlugin" />
+    </feature>
+    <feature name="GDHttpRequest">
+        <param name="ios-package" value="GDCHttpRequestPlugin" />
+    </feature>
+    <feature name="GDPush">
+        <param name="ios-package" value="GDCPushPlugin" />
+    </feature>
+    <feature name="GDSQLite">
+        <param name="ios-package" value="GDCSQLitePlugin" />
+    </feature>
+    <feature name="GDSocket">
+        <param name="ios-package" value="GDCSocketPlugin" />
+    </feature>
+    <feature name="GDTokenHelper">
+        <param name="ios-package" value="GDTokenHelperPlugin" />
+    </feature>
+    <feature name="GDAppKinetics">
+        <param name="ios-package" value="GDAppKineticsPlugin" />
+    </feature>
+    <feature name="GDSpecificPolicies">
+        <param name="ios-package" value="GDSpecificPoliciesPlugin" />
+    </feature>
+    <feature name="GDServerSideServices">
+        <param name="ios-package" value="GDServerSideServicesPlugin" />
+    </feature>
+
+</widget>
